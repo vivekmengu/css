@@ -1,0 +1,108 @@
+<html>
+<head>
+<style>
+    #instafeed a {
+  padding:5px 5px 1px 5px;
+  margin:10px;
+  border:1px solid #e1e1e1;
+  display:inline-block;
+  border-radius: 4px;
+  position:relative;
+}
+
+#instafeed .likes {
+  background:rgba(222,89,135,0.8);
+  font-family:sans-serif;
+  font-size:1em;
+  position:absolute;
+  color:#ffffff;
+  right:5px;
+  top:5px;
+  left:5px;
+  opacity:0;
+  text-align:center;
+  line-height:150px;
+  text-shadow:0 1px rgba(0,0,0,0.5);
+  -webkit-font-smoothing:antialiased;
+  -webkit-transition: opacity 100ms ease;
+	-moz-transition: opacity 100ms ease;
+	-o-transition: opacity 100ms ease;
+	-ms-transition: opacity 100ms ease;
+	transition: opacity 100ms ease;
+}
+
+#instafeed a:hover .likes {
+  opacity:1;
+}
+    
+</style>
+<script type="text/javscript" src="https://raw.githubusercontent.com/stevenschobert/instafeed.js/master/instafeed.min.js"></script>
+</head>
+<body>
+<div id="instafeed"></div>
+<!--<script type="text/javascript">
+    var feed = new Instafeed({
+  clientId: 'cdc9cf8193414e419dc834b28988db48',
+  limit: 20,
+  sortBy: 'most-liked',
+  after: function () {
+    var images = $("#instafeed").find('a');
+    $.each(images, function(index, image) {
+      var delay = (index * 75) + 'ms';
+      $(image).css('-webkit-animation-delay', delay);
+      $(image).css('-moz-animation-delay', delay);
+      $(image).css('-ms-animation-delay', delay);
+      $(image).css('-o-animation-delay', delay);
+      $(image).css('animation-delay', delay);
+      $(image).addClass('animated flipInX');
+    });
+  },
+  template: '<a href="{{link}}" target="_blank"><img src="{{image}}" /><div class="likes">&hearts; {{likes}}</div></a>'
+});
+feed.run();
+    
+</script>-->
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javscript" src="https://raw.githubusercontent.com/stevenschobert/instafeed.js/master/instafeed.min.js"></script>
+<script type="text/javascript">
+    var loadButton = $('.load-button'),
+
+    feed = new Instafeed({
+        get: 'tagged',
+        target: 'photo-feed',
+        tagName: 'awesome',
+        sortBy: 'most-recent',
+        limit: 5,
+        template: '<li><a href="{{link}}" rel="external"><img src="{{image}}" /><span class="info"><small class="likes">{{likes}}</small><small class="date">{{model.created_time}}</small></span><span class="icon-instagram"></span><span class="black-stripe"></span></a></li>',
+        clientId: 'f91aab7e4ac145478358edb768110be2',
+        resolution: 'low_resolution',
+        filter: function(image) {
+            var date = new Date(image.created_time*1000),
+                hour = date.getHours(),
+                min = date.getMinutes(),
+                thetime = hour + 'h ' + (min ? min + 'min' : '');
+            image.created_time = thetime;
+            return true;
+        },
+        after: function() {
+            // disable button if no more results to load
+            if (!this.hasNext()) {
+                loadButton.attr('disabled', 'disabled').addClass('hidden');
+            }
+
+            // call external links creator
+            extLink();
+        }
+    });
+
+feed.run();
+
+$(window).scroll(function(){
+    if (($(window).scrollTop() + $(window).height() > $(document).height() - 100) && feed.hasNext()) {
+        feed.next();
+    }
+});
+</script>
+<script type="text/javscript" src="https://raw.githubusercontent.com/stevenschobert/instafeed.js/master/instafeed.min.js"></script>
+</body>
+<html>

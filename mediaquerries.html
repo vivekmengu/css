@@ -1,0 +1,43 @@
+<html>
+<head>
+
+
+<style>
+    .changecolor {
+        background:blue;
+        width:100px;
+        height: 100px;
+    }
+
+@media only screen and (max-width:800px) {
+    .changecolor {
+    background:#ccc;
+    }
+} 
+
+@media only screen and (max-width:600px) {
+    .changecolor {
+        background:red;
+    }
+}
+@media only screen and (max-width:400px) {
+    .changecolor {
+        background:green;
+    }
+}
+</style>
+</head>
+<body>
+<div class="changecolor">
+
+</div>
+
+<scrit src="http://localhost/jquery.js"></script>
+<script>
+jQuery('document').ready(function(e) {
+    
+});
+
+</script>
+</body>
+</html>

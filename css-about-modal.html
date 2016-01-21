@@ -1,0 +1,99 @@
+<html>
+<head>
+	<title></title>
+	<style>
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:600,800');
+*{
+box-sizing:border-box;
+}
+html,body {
+  height:100%;
+}
+body {
+  background:#ededed;
+  font-family:'Open sans';
+  color:#333;
+  overflow:hidden;
+}
+h1 {
+  text-transform:uppercase;
+}
+h1,h2 {
+  text-align:center;
+  margin:20px auto;
+  text-shadow: 1px 1px 0px #fff;
+}
+div#content_of_page {
+  padding:20px 100px;
+}
+.blured_text  {
+  text-shadow:0px 0px 8px #000;
+  color:transparent;
+}
+div#modal {
+  position:absolute; 
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  background:rgba(0,103,138,0.9);
+  color:white;
+  padding:50px 100px;
+}
+div#modal_content {
+  position:absolute;
+  width:550px;
+  left:50%;
+  top:50%;
+  margin:-130px -275px;
+}
+div#modal h1, div#modal h2 {
+  
+  text-shadow: 1px 1px 0px #000;
+}
+div#modal a {
+  color:white;
+  display:block;
+  margin:auto;
+  width:50px;
+  height:50px;
+  line-height:35px;
+  text-align:center;
+  text-decoration:none;
+  font-size:2em;
+  padding:5px;
+  border:2px solid white;
+  border-radius:50%;
+  text-shadow: 0 0 5px #333;
+  box-shadow:0 0 2px #333;
+}
+div#modal a:hover {
+  color:#333;
+  border:2px solid #333;
+}
+	</style>
+</head>
+<body>
+<div id="content_of_page">
+  <h1 class="blured_text">Are we indeed?</h1> 
+  <h2 class="blured_text">'We indeed!' cried the Mouse, who was trembling down to the end of his  tail. 'As if I would talk on such a subject! Our family always HATED  cats: nasty, low, vulgar things! Don't let me hear the name again!'</h2>
+
+<p class="blured_text">'I won't indeed!' said Alice, in a great hurry to change the subject of  conversation. 'Are you&mdash;are you fond&mdash;of&mdash;of dogs?' The Mouse did not  answer, so Alice went on eagerly: 'There is such a nice little dog near  our house I should like to show you! A little bright-eyed terrier, you  know, with oh, such long curly brown hair! And it'll fetch things when  you throw them, and it'll sit up and beg for its dinner, and all sorts  of things&mdash;I can't remember half of them&mdash;and it belongs to a farmer,  you know, and he says it's so useful, it's worth a hundred pounds! He  says it kills all the rats and&mdash;oh dear!' cried Alice in a sorrowful  tone, 'I'm afraid I've offended it again!' For the Mouse was swimming  away from her as hard as it could go, and making quite a commotion in  the pool as it went.</p>
+</div>
+<div id="modal">
+  <div id="modal_content">
+    <h1>A Full screen modal on load, is generally considered a bad UX practice.<h1>
+    <h2>but is it always a bad idea?</h2> 
+    <a href="#" title="Close">✖</a>  
+  </div>
+</div> 
+	<script src="http://localhost/jquery.js"></script>
+	<script>
+$('div#modal').on('click','a',function(event){
+  event.preventDefault();
+  $('div#modal').fadeOut('slow');
+  $('h1,h2,p').removeClass('blured_text');  
+});
+	</script>
+</body>
+</html>

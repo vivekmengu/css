@@ -1,0 +1,291 @@
+<html>
+<head>
+<style>
+body{
+  position:absolute;
+  top:0; left:0; right:0; bottom:0;
+  width: 100%; height: 100%;
+  min-height: 2000px;
+  margin:0;
+}
+input[type=radio]{
+  display:none;
+}
+label{
+  cursor:pointer;
+}
+#nav{
+  position:absolute;
+  width: 20%;
+  height:100%;
+  background:#ccc;
+}
+#slideshow {
+  position: relative;
+  width: 80%;
+  height: 600px;
+  left: 20%;
+  background-repeat: no-repeat;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  /*border: 3px black solid;*/
+  border: 0;
+}
+
+#slideshow .next, #slideshow .prev {
+  /*styles des liens du slideshow*/
+  position: absolute;
+  top: 300px;
+  width: 50px;
+  height: 2em;
+  border: 1px solid #bbb;
+  font-size: 1.5em;
+  line-height: 2em;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  color: #aaa;
+  outline: 0 none;
+  -webkit-box-shadow: 0 0 5px #7799a7;
+  -moz-box-shadow: 0 0 5px #7799a7;
+  -ms-box-shadow: 0 0 5px #7799a7;
+  -o-box-shadow: 0 0 5px #7799a7;
+  box-shadow: 0 0 5px #7799a7;
+}
+#slideshow .next {
+  right: 0;
+  padding-right: 10px;
+  border-right: 0;
+  -webkit-border-radius: 8px 0 0 8px;
+  -moz-border-radius: 8px 0 0 8px;
+  -ms-border-radius: 8px 0 0 8px;
+  border-radius: 8px 0 0 8px;
+}
+#slideshow .prev {
+  left: 0;
+  padding-left: 10px;
+  border-left: 0;
+  -webkit-border-radius: 0 8px 8px 0;
+  -moz-border-radius: 0 8px 8px 0;
+  -ms-border-radius: 0 8px 8px 0;
+  border-radius: 0 8px 8px 0;
+}
+#slideshow .next:hover, #slideshow .prev:hover {
+  -webkit-box-shadow: 0 0 3px #7799a7;
+  -moz-box-shadow: 0 0 3px #7799a7;
+  -ms-box-shadow: 0 0 3px #7799a7;
+  -o-box-shadow: 0 0 3px #7799a7;
+  box-shadow: 0 0 3px #7799a7;
+}
+#slideshow .next:focus, #slideshow .prev:focus { text-decoration: underline; }
+#slideshow .next:active, #slideshow .prev:active {
+  -webkit-box-shadow: 0 0 1px #7799a7;
+  -moz-box-shadow: 0 0 1px #7799a7;
+  -ms-box-shadow: 0 0 1px #7799a7;
+  -o-box-shadow: 0 0 1px #7799a7;
+  box-shadow: 0 0 1px #7799a7;
+}
+.mini img{
+  /*styles des liens du slideshow*/
+
+  top: 0px;
+  height: 100px;
+  border-radius:10px;
+  border: 1px solid #bbb;
+  
+  
+}
+
+.mini img:hover{
+  -webkit-box-shadow: 0 0 10px #fff;
+  -moz-box-shadow: 0 0 10px #fff;
+  -ms-box-shadow: 0 0 10px #fff;
+  -o-box-shadow: 0 0 10px #fff;
+  box-shadow: 0 0 10px #fff;
+  
+}
+
+.mini:active{
+  -webkit-box-shadow: 0 0 1px #7799a7;
+  -moz-box-shadow: 0 0 1px #7799a7;
+  -ms-box-shadow: 0 0 1px #7799a7;
+  -o-box-shadow: 0 0 1px #7799a7;
+  box-shadow: 0 0 1px #7799a7;
+}
+
+#slideshow figure {
+  position: relative;
+  top: 0;
+  left: 60px;
+  height: 600px;
+  z-index: 200;
+}
+#slideshow figure img{
+  height: 450px;
+  -webkit-box-shadow: 0 0 15px #2C3438;
+  -moz-box-shadow: 0 0 15px #2C3438;
+  -ms-box-shadow: 0 0 15px #2C3438;
+  -o-box-shadow: 0 0 15px #2C3438;
+  box-shadow: 0 0 15px #2C3438;
+  border-radius: 15px;
+  
+}
+
+/* ********************SLIDESHOW  ****************************/
+#sLast {
+  position: relative;
+  overflow: hidden; /*cache ce qui déborde de la division*/
+  height:600px;
+}
+#sLast figure {
+  float: left;      /*pour aligner les figures*/
+  margin-right: 200px;  /*pour espacer les figures*/
+}
+
+
+#sContent {
+  position: absolute;     /* position absolue pour gérer plus facilement le glissement horizontal */
+  left: 0;          /* position de départ à gauche */
+  z-index: 20;        /* pour placer le contenu en dessous des boutons */
+  width: 5500px;        /* largeur du contenu : largeurFigure + largeurEspacementFigure = (800px + 40px) x 4 */
+  height:600px;         /* hauteur d'un figure */
+  -webkit-transition: all 1s; /* on prévoit l'effet de transition pour webkit */
+  -moz-transition: all 1s;  /* idem pour firefox 3.7 */
+  -ms-transition: all 1s;   /* ms */
+  -o-transition: all 1s;    /* idem pour opera 10.5+ */
+  transition: all 1s;     /* w3c*/
+}
+.next, .prev { z-index: 30; }               /* on place les boutons au dessus du contenu */
+.next0, .prev2, .next2, .prev3, .next3, .prev4, .next4, .prev5 { display: none; }         /* les "autres" boutons ne sont pas immédiatement dispo */
+
+/* quand S1 est targeté (donc quand on vient de la visu de S2) */
+#cs1:checked~ #sContent { left: 0px; }            /* on revient à la position initiale */
+#cs1:checked~ .next, #cs1:checked~ .prev { display: none; }   /* on planque tout les boutons, mais... */      
+#cs1:checked~ .next1 { display: block; }          /* ...on on fait réaparaitre le next1 */
+
+/* quand S2 est targeté */
+#cs2:checked~ #sContent { left: -950px; }         /* on fait défiler le contenu à 950px  */
+#cs2:checked~ .next, #cs2:checked~ .prev { display: none; }   /* on planque tous les boutons mais... */
+#cs2:checked~ .next2, #cs2:checked~ .prev2 { display: block; }  /* ...on fait réapparaitre les boutons suiv.(vers S3) et prec.(vers S1) */
+
+/* quand S3 est targeté */
+#cs3:checked~ #sContent { left: -2000px; }          /* on fait défiler le contenu à 200px ( */
+#cs3:checked~ .next, #cs3:checked~ .prev { display: none; }   /* on planque tout mais...*/
+#cs3:checked~ .next3, #cs3:checked~ .prev3 { display: block; }          /* ...on fait réapparaitre prec3 (vers S2) */
+
+/* quand S4 est targeté */
+#cs4:checked~ #sContent { left: -3000px; }          /* on fait défiler le contenu à 3000px  */
+#cs4:checked~ .next, #cs4:checked~ .prev { display: none; }   /* on planque tout mais...*/
+#cs4:checked~ .next4, #cs4:checked~ .prev4 { display: block; }          /* ...on fait réapparaitre prec4 (vers S3) */
+
+/* quand S5 est targeté */
+#cs5:checked~ #sContent { left: -4100px; }          /* on fait défiler le contenu à 3650px */
+#cs5:checked~ .next, #cs5:checked~ .prev { display: none; }   /* on planque tout mais...*/
+#cs5:checked~ .prev5, #cs5:checked~ .next0 {display: block;}
+
+</style>
+</head>
+<body>
+<div id="nav">
+  <div > <!--les miniatures-->
+    
+    <label for="cs1" class="mini" id="m1"><img src="http://duckduckgo.com/assets/about/about-duckduckgo-posterimg.jpg" alt="" ></label>
+    
+    <label for="cs2" class="mini" id="m2"><img src="http://duckduckgo.com/assets/about/about-duckduckgo-posterimg.jpg" alt="" ></label>
+    
+    <label for="cs3" class="mini" id="m3"><img src="http://duckduckgo.com/assets/about/about-duckduckgo-posterimg.jpg" alt="" ></label>
+    
+    <label for="cs4" class="mini" id="m4"><img src="http://duckduckgo.com/assets/about/about-duckduckgo-posterimg.jpg" alt="" ></label>
+    
+    <label for="cs5" class="mini" id="m5"><img src="http://duckduckgo.com/assets/about/about-duckduckgo-posterimg.jpg" alt="" ></label>
+    
+    
+    
+  </div>
+</div>
+<section id="slideshow">
+  
+  
+  <div id="s1">
+    
+    <div id="s2">
+      
+      <div id="s3">
+        
+        <div id="s4">
+          
+          <div id="s5">
+            
+            <div id="sLast">
+              
+              <input type="radio" id="cs2" name="check"><label for="cs2" class="next next1">></label><!--1ere image : on cré un bouton pour passer à la prochaine-->
+              
+              <input type="radio" id="cs1" name="check"><label for="cs1" class="prev prev2">&lt;</label> <!--2eme : on cré un bouton pour passer à la suivant et revenir en arrière-->
+              
+              <input type="radio" id="cs3" name="check"><label for="cs3" class="next next2">></label>
+              
+              <input type="radio" id="cs2" name="check"><label for="cs2" class="prev prev3">&lt;</label> <!--3eme < >-->
+              
+              <input type="radio" id="cs4" name="check"><label for="cs4" class="next next3">></label>
+              
+              <input type="radio" id="cs3" name="check"><label for="cs3" class="prev prev4">&lt;</label> <!--4eme: < > -->
+              
+              <input type="radio" id="cs5" name="check"><label for="cs5" class="next next4">></label>
+              
+              <input type="radio" id="cs4" name="check"><label for="cs4" class="prev prev5">&lt;</label> <!--5eme : on cré seulement un bouton pour revenir en avant-->
+              <label for="cs1" class="next next0">></label>
+              <div id="sContent">
+                
+                <figure >
+                  
+                  <a href="#" target=_blank ><img src="http://duckduckgo.com/assets/about/about-duckduckgo-posterimg.jpg" alt="" ></a>											
+                  
+                </figure>
+                
+                
+                
+                <figure >
+                  
+                  <a href="#" target=_blank ><img src="http://duckduckgo.com/assets/about/about-duckduckgo-posterimg.jpg" alt="" ></a>								
+                  
+                </figure>
+                
+                
+                
+                <figure >
+                  
+                  <a href="#" target=_blank><img src="http://duckduckgo.com/assets/about/about-duckduckgo-posterimg.jpg" alt="" ></a>
+                  
+                </figure>
+                
+                
+                <figure >
+                  
+                  <a href="#" target=_blank><img src="http://duckduckgo.com/assets/about/about-duckduckgo-posterimg.jpg" alt=""></a>
+                  
+                </figure>
+                
+                <figure>
+                  
+                  <a href="#" target=_blank><img src="http://duckduckgo.com/assets/about/about-duckduckgo-posterimg.jpg" alt=""></a>
+                  
+                </figure>
+                
+                
+              </div>
+              
+            </div>
+            
+          </div>	
+          
+        </div>
+        
+      </div>	
+      
+    </div>
+    
+  </div>
+  
+</section>
+</body>
+</html>

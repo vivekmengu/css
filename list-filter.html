@@ -1,0 +1,356 @@
+<html>
+<head>
+	<title></title>
+	<style>
+
+/* this declares a better box model */
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+
+
+.list-wrap label {
+  float:left;
+  color:#00BDE8;
+}
+.search-box {
+  float:left;
+  clear:left;
+  width:70%;
+  padding:0.4em;
+  font-size:1em;
+  color:#555;
+}
+
+.list-count {
+  float:left;
+  text-align:center;
+  width:30%;
+  padding:0.5em;
+  color:#ddd;
+}
+
+
+
+li {
+  transition-property: margin, background-color, border-color;
+  transition-duration: .4s, .2s, .2s;
+  transition-timing-function: ease-in-out, ease, ease;
+}
+
+.empty-item {
+  transition-property: opacity;
+  transition-duration: 0s;
+  transition-delay: 0s;
+  transition-timing-function: ease;
+}
+
+.empty .empty-item {
+  transition-property: opacity;
+  transition-duration: .2s;
+  transition-delay: .3s;
+  transition-timing-function: ease;
+}
+
+.hiding {
+  margin-left:-100%;
+  opacity:0.5;
+}
+
+.hidden {
+  display:none;
+}
+
+ul {
+  float:left;
+  width:100%;
+  margin:2em 0;
+  padding:0;
+  position:relative;
+}
+
+ul:before {
+  content:'desserts';
+  position:absolute;
+  left:-2.8em;
+  font-size:3em;
+  text-align:right;
+  top:1.5em;
+  color:#ededed;
+  font-weight:bold;
+  font-family: 'Maven Pro', sans-serif;
+  transform:rotate(-90deg);
+}
+
+li {
+  float:left;
+  clear:left;
+  width:100%;
+  margin:0.2em 0;
+  padding:0.5em 0.8em;
+  list-style:none;
+  background-color:#f2f2f2;
+  border-left:5px solid #003842;
+  cursor:pointer;
+  color:#333;
+  position:relative;
+  z-index:2;
+}
+
+li:hover {
+  background-color:#f9f9f9;
+  border-color:#00BDE8;
+}
+
+.empty-item {
+  background:#fff;
+  color:#ddd;
+  margin:0.2em 0;
+  padding:0.5em 0.8em;
+  font-style:italic;
+  border:none;
+  text-align:center;
+  visibility:hidden;
+  opacity:0;
+  float:left;
+  clear:left;
+  width:100%;
+}
+
+.empty .empty-item {
+  opacity:1;
+  visibility:visible;
+}
+/*
+The following are styles purely for the surroundings
+*/
+
+
+
+body {
+  background-color:#fff;
+  font-family:'Open Sans', sans-serif;
+  margin:0;
+  padding:0;
+  font-size:1em;
+}
+
+a {color:#00BDE8;}
+
+h1 {
+  font-size:2.6em;
+  margin:0;
+  padding-top:1.5em;
+  text-align:center;
+  font-family: 'Maven Pro', sans-serif;
+}
+h3 {
+  margin:0 0 2em;
+  text-align:center;
+font-weight:normal;
+font-family: georgia, times;
+font-style:italic;
+  color:#777;
+  font-size:1em;
+}
+
+.info {
+  float:left;
+  width:60%;
+  margin:2em 20%;
+  padding:2em 0;
+  background:#f9f9f9;
+  border-left:5px solid #003842;
+  padding:10px 20px;
+}
+
+.list-wrap {
+  float:left;
+  width:40%;
+  margin:2em 30%;
+  padding:2em 0;
+}
+
+p {
+  text-align:left;
+  font-size:1em;
+}
+
+.cta {
+  float:left;
+  width:100%;
+  text-align:center;
+  color:#999;
+  font-family:georgia, times;
+  font-style:italic;
+  margin:2em 0;
+}
+
+.cta a {
+  font-size:1.5em;
+  font-style:normal;
+  font-family: 'Maven Pro', sans-serif;
+  text-decoration:none;
+  line-height:1.5em;
+}
+
+.topdeco {
+  float:left;
+  width:100%;
+  height:10px;
+  position:fixed;
+  z-index:10;
+}
+
+.topdeco span {
+  float:left;
+  width:25%;
+  height:100%;
+}
+.deco span:nth-child(1) {
+  background:#FF8220;
+}
+.deco span:nth-child(2) {
+  background:#000;
+}
+.deco span:nth-child(3) {
+  background:#FFA00A;
+}
+.deco span:nth-child(4) {
+  background:#ccc;
+}
+</style>
+</head>
+<body>
+	
+<link href='http://fonts.googleapis.com/css?family=Open+Sans|Maven+Pro:500' rel='stylesheet' type='text/css'>
+<div class="deco topdeco">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  </div>
+  
+  <h1>Simple jQuery Filter Search</h1>
+  <h3>
+    I call this (Cake Filter)
+  </h3>
+
+ <section class="list-wrap">
+
+   <label for="search-text">Search the list</label>
+  <input type="text" id="search-text" placeholder="search" class="search-box">
+    <span class="list-count"></span>
+    
+<ul id="list">
+  <li class="in">Lemon Drizzle</li>
+  <li class="in">Fudge Cake</li>
+  <li class="in">Jam Sponge</li>
+  <li class="in">Carrot Cake</li>Yum, one of the best tasting cakes around
+  <li class="in">Cupcake</li>
+  <li class="in">Chocolate-strawberry torte</li>
+  <li class="in">Chocolate-zucchini cake</li>
+  <li class="in">Anything involving chocolate and mint</li>
+  <li class="in">Red-velvet cake</li>
+  <li class="in">Anything involving fruits that aren't cherries</li>
+  <span class="empty-item">Sorry No Results For That Term</span>
+</ul>
+   </section>
+   
+     <p class="cta">
+    Visit Us <br /> <a id="link" href="http://minialan.com">Mini Alan</a>
+</p>
+<script src="http://localhost/jquery.js"></script>
+<script>
+$(document).ready(function() {
+
+  var jobCount = $('#list .in').length;
+  $('.list-count').text(jobCount + ' items');
+    
+  
+  $("#search-text").keyup(function () {
+     //$(this).addClass('hidden');
+  
+    var searchTerm = $("#search-text").val();
+    var listItem = $('#list').children('li');
+  
+    
+    var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
+    
+      //extends :contains to be case insensitive
+  $.extend($.expr[':'], {
+  'containsi': function(elem, i, match, array)
+  {
+    return (elem.textContent || elem.innerText || '').toLowerCase()
+    .indexOf((match[3] || "").toLowerCase()) >= 0;
+  }
+});
+    
+    
+    $("#list li").not(":containsi('" + searchSplit + "')").each(function(e)   {
+      $(this).addClass('hiding out').removeClass('in');
+      setTimeout(function() {
+          $('.out').addClass('hidden');
+        }, 300);
+    });
+    
+    $("#list li:containsi('" + searchSplit + "')").each(function(e) {
+      $(this).removeClass('hidden out').addClass('in');
+      setTimeout(function() {
+          $('.in').removeClass('hiding');
+        }, 1);
+    });
+    
+  
+      var jobCount = $('#list .in').length;
+    $('.list-count').text(jobCount + ' items');
+    
+    //shows empty state text when no jobs found
+    if(jobCount == '0') {
+      $('#list').addClass('empty');
+    }
+    else {
+      $('#list').removeClass('empty');
+    }
+    
+  });
+
+  
+                  
+     /*  
+     An extra! This function implements
+     jQuery autocomplete in the searchbox.
+     Uncomment to use :)
+     
+     
+ function searchList() {                
+    //array of list items
+    var listArray = [];
+  
+     $("#list li").each(function() {
+    var listText = $(this).text().trim();
+      listArray.push(listText);
+    });
+    
+    $('#search-text').autocomplete({
+        source: listArray
+    });
+    
+    
+  }
+                                   
+  searchList();
+*/
+  
+                    
+});
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

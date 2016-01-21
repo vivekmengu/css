@@ -1,0 +1,126 @@
+<html>
+<head>
+<style>
+		/* Coverage Banner */
+.coverage{
+	border: 2px solid #333;
+	width: 100%;
+}
+.coverage ul.coverage_list{
+	display: none;
+}
+.coverage h2{
+	font-size: 2em;
+	font-weight: 700;
+	padding-left:30%;
+	margin:0px;
+	overflow: hidden;
+	display: block;
+	white-space: nowrap
+}
+.coverage h2 .flip{
+	display: inline-block;
+	position: relative;
+	padding: 0px;
+	margin: 0px;
+}
+.coverage h2 .flip .current{
+	position: relative
+	left:0;
+color: red;
+	display: inline-block;
+	text-align: left;
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+}
+.coverage h2 .flip .newcity{
+	position: absolute;
+	display: inline-block;
+	text-align: left;
+	white-space: nowrap;
+	left: 0;
+	padding: 0px;
+	margin: 0px;
+}
+		
+</style>
+</head>
+<body>
+<div class="coverage">
+		<h2>Kellin has service in&nbsp;<span class="flip"></span></h2>
+		<ul class="coverage_list">
+			<li>Larkspur</li>
+			<li>Castle Rock</li>
+			<li>Monument</li>
+			<li>Palmer Lake</li>
+			<li>Colorado Springs</li>
+			<li>Pueblo</li>
+			<li>Peyton</li>
+			<li>Falcon</li>
+			<li>Calhan</li>
+			<li>Franktown</li>
+			<li>Elizabeth</li>
+			<li>Elbert</li>
+			<li>Glenwood Springs</li>
+			<li>Rifle</li>
+			<li>Silt</li>
+			<li>El Jebel</li>
+			<li>Carbondale</li>
+			<li>New Castle</li>
+			<li>Parachute</li>
+			<li>Battlement</li>
+		</ul>
+	</div><!-- end .coverage -->
+	<script src="http://localhost/jquery.js"></script>
+	<script>
+		var coverageVars = {
+	index : 1,
+	count : 0,
+	flipTime : 500
+}
+
+// .current = Current City, position relative
+// .newcity = New City, position absolute;
+
+$(document).ready(function(){
+
+	// Load First City Into H2 Display
+	var firstCity = $('ul.coverage_list li:nth-child(1)').html();
+	$('.coverage h2 .flip').append('<span class="current">'+firstCity+'!</span>');
+
+	// Get Count
+	coverageVars.count = $('ul.coverage_list').children('li').length;
+
+	var flipTimer = setInterval(function(){
+		
+		// Increase Counter
+		if( coverageVars.index < coverageVars.count ){
+			coverageVars.index += 1;
+		} else {
+			coverageVars.index = 1;
+		}
+
+		// Get City Names
+		var currentCity = $('.coverage h2 .flip .current').html();
+		var newCity = $('ul.coverage_list li:nth-child('+coverageVars.index+')').html();
+
+		// Append newcity span to flip element
+		$('.coverage h2 .flip').append('<span class="newcity" style="top:50px;">'+newCity+'!</span>');
+		$('.coverage h2 .flip .current').animate({top:'-50px'}, coverageVars.flipTime, function(){
+			$(this).remove();
+		});
+		$('.coverage h2 .flip .newcity').animate({top:0}, coverageVars.flipTime, function(){
+			console.log('done!');
+			$(this).removeClass('newcity').addClass('current');
+		});
+
+	}, 1500);
+	
+
+
+
+});
+	</script>
+</body>
+</html>

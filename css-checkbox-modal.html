@@ -1,0 +1,53 @@
+<html>
+<head>
+	<title></title>
+	<style>
+body {
+  background: -webkit-linear-gradient(63deg, #151515 5px, transparent 5px) 0 5px, -webkit-linear-gradient(-117deg, #151515 5px, transparent 5px) 10px 0px, -webkit-linear-gradient(63deg, #222222 5px, transparent 5px) 0px 10px, -webkit-linear-gradient(-117deg, #222222 5px, transparent 5px) 10px 5px, -webkit-linear-gradient(0deg, #1b1b1b 10px, transparent 10px), -webkit-linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+  background-color: #131313;
+  background-size: 20px 20px;
+  color: #fff;
+  font-size: 1em;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+.modal {
+  opacity: 0;
+  transform: translateY(-150%);
+  position: absolute;
+  left: 30%;
+  width: 160px;
+  height: 160px;
+  padding: 20px;
+  border: 2px solid #fff;
+  background: rgba(255, 255, 255, 0.7);
+  color: #000;
+  border-radius: 10px;
+  box-shadow: #000 0 0 20px;
+  transition: 0.5s ease-in-out;
+}
+label {
+  background: green;
+  padding: 1px 4px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  text-shadow: #000 1px 1px 1px;
+}
+input[type="checkbox"] {
+  font-size: 2em;
+  margin: 0;
+  padding: 0;
+}
+input[type="checkbox"]:checked ~ .modal {
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+	</style>
+</head>
+<body>
+	<label>Abre Modal</label> <input type="checkbox"> 
+<div class="modal">
+  Modal abierta
+</div>
+</body>
+</html>

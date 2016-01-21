@@ -1,0 +1,132 @@
+<html>
+<head>
+<style>
+
+main.wdm-tabs-layout {
+  min-width: 320px;
+  max-width: 800px;
+  padding: 50px;
+  margin: 0 auto;
+  background: #fff;
+}
+
+main.wdm-tabs-layout section {
+  display: none;
+  padding: 20px 0 0;
+  border-top: 1px solid #ddd;
+}
+
+main.wdm-tabs-layout input {
+  display: none;
+}
+
+main.wdm-tabs-layout label {
+  display: inline-block;
+  margin: 0 0 -1px;
+  padding: 15px 25px 15px 0;
+  font-weight: 600;
+  text-align: center;
+  color: #bbb;
+  border: 1px solid transparent;
+}
+
+
+main.wdm-tabs-layout label:hover {
+  color: #888;
+  cursor: pointer;
+}
+
+main.wdm-tabs-layout input:checked + label {
+  color: #555;
+  border: 0px solid #ddd;
+  border-bottom: 2px solid orange;
+}
+
+main.wdm-tabs-layout #tab1:checked ~ #content1,
+main.wdm-tabs-layout #tab2:checked ~ #content2,
+main.wdm-tabs-layout #tab3:checked ~ #content3,
+main.wdm-tabs-layout #tab4:checked ~ #content4 {
+  display: block;
+}
+
+main.wdm-tabs-layout label .wdm-tabsicon-for-mobile { 
+	display: none;
+}
+
+@media screen and (max-width: 650px) {
+  main.wdm-tabs-layout label {
+    font-size: 0;
+  }
+
+  main.wdm-tabs-layout label .wdm-tabsicon-for-mobile {
+    margin: 0;
+    font-size: 18px;
+    display: inline-block;
+  }
+}
+@media screen and (max-width: 400px) {
+ main.wdm-tabs-layout label {
+    padding: 15px;
+  }
+}
+
+
+</style>
+</head>
+<body>
+<h1>Responsive CSS Tabs</h1>
+
+<main id="wdm-tabs-layout" class="wdm-tabs-layout">
+  
+  <input id="tab1" type="radio" name="tabs" checked>
+  <label for="tab1"><span class="wdm-tabsicon-for-mobile"><i class="fa fa-facebook"></i></span>Codepen</label>
+    
+  <input id="tab2" type="radio" name="tabs">
+  <label for="tab2"><span class="wdm-tabsicon-for-mobile"><i class="fa fa-facebook"></i></span>Dribbble</label>
+    
+  <input id="tab3" type="radio" name="tabs">
+  <label for="tab3"><span class="wdm-tabsicon-for-mobile"><i class="fa fa-facebook"></i></span>Dropbox</label>
+    
+  <input id="tab4" type="radio" name="tabs">
+  <label for="tab4"><span class="wdm-tabsicon-for-mobile"><i class="fa fa-facebook"></i></span>Drupal</label>
+    
+  <section id="content1">
+    <p>
+      Bacon ipsum dolor sit amet beef venison beef ribs kielbasa. Sausage pig leberkas, t-bone sirloin shoulder bresaola. Frankfurter rump porchetta ham. Pork belly prosciutto brisket meatloaf short ribs.
+    </p>
+    <p>
+      Brisket meatball turkey short loin boudin leberkas meatloaf chuck andouille pork loin pastrami spare ribs pancetta rump. Frankfurter corned beef beef tenderloin short loin meatloaf swine ground round venison.
+    </p>
+  </section>
+    
+  <section id="content2">
+    <p>
+      Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin ball tip turducken. Pork belly meatball t-bone bresaola tail filet mignon kevin turkey ribeye shank flank doner cow kielbasa shankle. Pig swine chicken hamburger, tenderloin turkey rump ball tip sirloin frankfurter meatloaf boudin brisket ham hock. Hamburger venison brisket tri-tip andouille pork belly ball tip short ribs biltong meatball chuck. Pork chop ribeye tail short ribs, beef hamburger meatball kielbasa rump corned beef porchetta landjaeger flank. Doner rump frankfurter meatball meatloaf, cow kevin pork pork loin venison fatback spare ribs salami beef ribs.
+    </p>
+    <p>
+      Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder. Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta turkey.
+    </p>
+  </section>
+    
+  <section id="content3">
+    <p>
+      Bacon ipsum dolor sit amet beef venison beef ribs kielbasa. Sausage pig leberkas, t-bone sirloin shoulder bresaola. Frankfurter rump porchetta ham. Pork belly prosciutto brisket meatloaf short ribs.
+    </p>
+    <p>
+      Brisket meatball turkey short loin boudin leberkas meatloaf chuck andouille pork loin pastrami spare ribs pancetta rump. Frankfurter corned beef beef tenderloin short loin meatloaf swine ground round venison.
+    </p>
+  </section>
+    
+  <section id="content4">
+    <p>
+      Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin ball tip turducken. Pork belly meatball t-bone bresaola tail filet mignon kevin turkey ribeye shank flank doner cow kielbasa shankle. Pig swine chicken hamburger, tenderloin turkey rump ball tip sirloin frankfurter meatloaf boudin brisket ham hock. Hamburger venison brisket tri-tip andouille pork belly ball tip short ribs biltong meatball chuck. Pork chop ribeye tail short ribs, beef hamburger meatball kielbasa rump corned beef porchetta landjaeger flank. Doner rump frankfurter meatball meatloaf, cow kevin pork pork loin venison fatback spare ribs salami beef ribs.
+    </p>
+    <p>
+      Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder. Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta turkey.
+    </p>
+  </section>
+    
+</main>
+
+</body>
+</html>

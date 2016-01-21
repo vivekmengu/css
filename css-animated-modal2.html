@@ -1,0 +1,365 @@
+<html>
+<head>
+	<title></title>
+	<style>@import url("http://fonts.googleapis.com/css?family=Open+Sans:300,400,800");
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,900);
+@import url(http://fonts.googleapis.com/css?family=Audiowide);
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  font-size: 100%;
+  height: 100%;
+  width: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+h2, h3 {
+  margin: 1.414em 0 0.5em;
+}
+
+h1 {
+  font-size: 1.5em;
+  font-size: 6vw;
+  margin: 0 0 0.5em;
+}
+@media (min-width: 50em) {
+  h1 {
+    font-size: 2.25em;
+  }
+}
+@media (min-width: 62.5em) {
+  h1 {
+    font-size: 3.375em;
+  }
+}
+
+h2 {
+  font-size: 1em;
+}
+@media (min-width: 50em) {
+  h2 {
+    font-size: 1.5em;
+  }
+}
+@media (min-width: 62.5em) {
+  h2 {
+    font-size: 2.25em;
+  }
+}
+
+h3 {
+  font-size: 0.75em;
+}
+@media (min-width: 50em) {
+  h3 {
+    font-size: 1em;
+  }
+}
+@media (min-width: 62.5em) {
+  h3 {
+    font-size: 1.5em;
+  }
+}
+
+p, ul {
+  font-size: 0.75em;
+  margin-bottom: 0.75em;
+}
+@media (min-width: 31.25em) {
+  p, ul {
+    font-size: 1em;
+  }
+}
+@media (min-width: 81.25em) {
+  p, ul {
+    font-size: 1.15em;
+  }
+}
+
+strong {
+  font-weight: bold;
+}
+
+/*==================================== 
+  Some styles to spruce up the demo
+=====================================*/
+body {
+  background: #f2f1f1;
+  color: #5E5E5E;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  text-shadow: 1px 1px 1px #fff;
+  text-align: center;
+}
+
+h1 {
+  font-size: 1.5em;
+  font-size: 7vw;
+  line-height: 1.2;
+  margin: 0;
+}
+@media (min-width: 31.25em) {
+  h1 {
+    font-size: 2.25em;
+    font-size: 7vw;
+  }
+}
+@media (min-width: 62.5em) {
+  h1 {
+    font-size: 4.5em;
+  }
+}
+
+h2 {
+  font-size: 1em;
+  line-height: 1.2;
+  margin: 1.414em 0 0.5em;
+}
+@media (min-width: 31.25em) {
+  h2 {
+    font-size: 1.5em;
+  }
+}
+@media (min-width: 50em) {
+  h2 {
+    font-size: 1.8em;
+  }
+}
+
+h1 {
+  color: #000000;
+  font-family: "Audiowide", cursive;
+  font-weight: 900;
+  margin: 0.5em 0 2.5em;
+}
+h1 span {
+  color: #FFD300;
+}
+
+.wrap {
+  padding: 1em;
+  text-align: center;
+}
+@media (min-width: 43.75em) {
+  .wrap {
+    padding: 1em 2em;
+  }
+}
+
+/*==================================== 
+  Our Modal Window styles
+=====================================*/
+.modal {
+  background: #fff;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+  display: inline-block;
+  padding: 1em;
+}
+
+@media (min-width: 43.75em) {
+  .modal {
+    padding: 1.5em;
+  }
+}
+.modal > label {
+  background: #FFD300;
+  border: 1px solid #f0c600;
+  border-radius: .2em;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.75em 1.5em;
+  text-shadow: 1px 1px 1px #fff;
+  -webkit-transition: all 0.55s;
+  transition: all 0.55s;
+}
+
+.modal > label:hover {
+  -webkit-transform: scale(0.97);
+          transform: scale(0.97);
+}
+
+.modal__overlay {
+  background: #000000;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  text-shadow: none;
+  top: 0;
+  z-index: 600;
+}
+
+.modal__wrap {
+  padding: 1em 0;
+  position: relative;
+  margin: 0 auto;
+  max-width: 500px;
+  width: 90%;
+}
+
+@media (min-width: 50em) {
+  .modal__wrap {
+    padding: 1.75em;
+  }
+}
+@media (min-height: 37.5em) {
+  .modal__wrap {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(-50%, -80%);
+            transform: translate(-50%, -80%);
+  }
+}
+.modal__wrap label {
+  background: #FFD300;
+  border-radius: 50%;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  height: 1.5em;
+  line-height: 1.5;
+  position: absolute;
+  right: .5em;
+  top: .5em;
+  width: 1.5em;
+}
+
+.modal__wrap h2 {
+  color: #FFD300;
+  margin-bottom: 1em;
+  text-transform: uppercase;
+}
+
+.modal__wrap p {
+  color: #FFD300;
+  text-align: justify;
+}
+
+.modal input:focus ~ label {
+  -webkit-transform: scale(0.97);
+          transform: scale(0.97);
+}
+
+input {
+  position: absolute;
+  top: -1000px;
+}
+
+.modal__overlay {
+  opacity: 0;
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+  -webkit-transition: all 0.75s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all 0.75s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: -100;
+}
+
+input:checked ~ .modal__overlay {
+  opacity: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  z-index: 800;
+}
+</style>
+</head>
+<body>
+	<!--End of Wrap -->
+<div class="wrap">
+    <h1>Pure <span>CSS</span> Modal Popup</h1>
+
+</div>
+<!--End of Wrap -->
+
+
+<!--Start of Modal -->
+<div class="modal">
+    <input id="modal__trigger" type="checkbox" />
+    <label for="modal__trigger">Launch Modal</label>
+    <div class="modal__overlay" role="dialog" aria-labelledby="modal__title" aria-describedby="modal_desc">
+        <div class="modal__wrap">
+            <label for="modal__trigger">&#10006;</label>
+            <h2 id="modal__title">This is your modal content</h2>
+            <p id="modal__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac laoreet elit. Phasellus dignissim purus vitae urna cursus, quis congue ligula tristique. Ut nec blandit risus. Donec at orci ut justo venenatis viverra. Suspendisse in volutpat lacus. In enim est, dapibus eget ipsum sed, suscipit ultrices diam.</p>
+        </div>
+    </div>
+</div>
+<!--End of Modal -->
+</body>
+</html>

@@ -1,0 +1,211 @@
+<html>
+<head>
+	<title></title>
+	<style>
+	html, body {
+  box-sizing: border-box; 
+}
+
+h1 {
+  text-align: center;
+}
+
+.container {
+  background-color: #f0f8ff;
+  border-radius: 5px;
+}
+
+#search input {
+  position: relative;
+  left: 50%;
+  margin-left: -125px;
+  width: 250px;
+  padding: 8px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-size: 1em;
+}
+
+button {
+  outline: none;
+  border: none;
+  padding: 5px;
+  margin-left: 5px;
+  border-radius: 5px;
+  width: 120px;
+}
+
+@media (min-width: 870px) {
+  #buttons {
+    position: relative; 
+    left: 50%;
+    width: 845px;
+    margin-left: -422.5px;
+  }
+}
+
+button.active {
+  background-color: #00cbff;
+}
+
+#gallery img {
+  background-color: #00cbff;
+  width: 96%; /*96%*/
+  height: 150px; /*150px*/
+  margin: 2%;
+  padding: 0;
+  /*border: 4px solid #fff;*/
+}
+
+@media (min-width: 480px) {
+  #gallery img {
+    width: 46%; /*46%*/
+    margin: 2% 1% 2% 2%;
+  }
+}
+</style>
+</head>
+<body>
+	<header>
+  <h1>Filtered Image Gallery</h1>
+</header>
+<div class="container">
+  <div id="search">
+    <input type="text" placeholder="filter by search" id="filter-search" />
+  </div>
+  <div id="buttons"></div>
+  <div id="gallery">
+    <img src="#" data-tags="Animators, Illustrators" alt="first image">
+    <img src="#" data-tags="Photographers, Filmakers" alt="second image">
+    <img src="#" data-tags="Photographers, Filmakers" alt="third image">
+    <img src="#" data-tags="Designers" alt="fourth image">
+    <img src="#" data-tags="Filmakers" alt="fifth image">
+    <img src="#" data-tags="Designers, Animators" alt="sixth image">
+  </div>
+</div>
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  //declare all the needed variables
+  var $imgs = $('#gallery img');
+  var $buttons = $('#buttons');
+  var tagged = {};
+  
+  var $search = $('#filter-search');
+  var cache = [];
+
+  //each function used to pinpoint each image in the gallery
+  $imgs.each(function() {
+    //each image in the gallery is placed in the variable img
+    var img = this;
+    //capturing each data-tag in a variable
+    var tags = $(this).data('tags');
+
+    //if tags exist...truthy statement
+    if (tags) {
+      //places a comma in between each tag
+      //for each tag do the following function with a perameter of tagName
+      //each tag is given the name tagName
+      tags.split(',').forEach(function(tagName) {
+        //if there are no tagNames within the array of the tagged object
+        if (tagged[tagName] == null) {
+          //create empty array
+          tagged[tagName] = [];
+        }
+        //push all tagnames into the tagName array of the tagged object
+        tagged[tagName].push(img);
+      }); //.forEach()
+    } //first conditional function
+  }); //.each()
+
+  //create a new button element & add text, a class, and a click function
+  $('<button/>', {
+    text: 'Show All',
+    class: 'active',
+    click: function() {
+        $(this).addClass('active').siblings().removeClass('active');
+        $imgs.fadeIn();
+      } //click function end
+  }).appendTo($buttons);
+
+  //jQuery.each function iterates over both objects & arrays: jQuery.each( array, callback )
+  //function has the parameter tagName
+  $.each(tagged, function(tagName) {
+    //create a new button for each tagName in the tagged object / array
+    $('<button/>', {
+      text: tagName + ' (' + tagged[tagName].length + ')',
+      click: function() {
+          $(this).addClass('active').siblings().removeClass('active');
+          //filter for the images related to each tagname in the tagged object / array
+          $imgs.fadeOut(100).hide().filter(tagged[tagName]).fadeIn(100);
+        } //click function end
+    }).appendTo($buttons);
+  }); //jQuery.each() end
+  
+  
+
+  //for each image in the gallery
+  $imgs.each(function() {
+    //push each image into the cache array created above
+    cache.push({
+      //element is each image
+      element: this,
+      //text is each image alt text with trim() to get rid of white space and change it to lowercase
+      text: this.alt.trim().toLowerCase()
+    }); //.push()
+  }); //.each()
+  
+  function filter() {
+      //this gets the element that the action is on...in this case $search...gets the value, gets rid of white space, and makes it lowercase
+      var query = this.value.trim().toLowerCase();
+
+      //for each item in the cache array run function with parameter img
+      cache.forEach(function(img) {
+        var index = 0;
+        //if query is a truthy conditional statement
+        if (query) {
+          //index is each object's text taken from the cache array
+          //indexOf with query as the perameter makes it so that the query works on every letter that you type for a live search
+          index = img.text.indexOf(query);
+        }
+
+        img.element.style.display = index === -1 ? 'none' : '';
+      }); //.forEach()
+    } //filter ()
+  
+  /*var delay = (function(){
+  var timer = 0;
+  return function(callback, ms){
+    clearTimeout (timer);
+    timer = setTimeout(callback, ms);
+  };
+})();*/
+  
+  $search.on('keyup', filter);
+  
+  /*$('input').keyup(function() {
+    delay(function(){
+      alert('Time elapsed!');
+    }, 1000 );
+  });*/
+  
+  /*if ('oninput' in $search[0]) {
+    $search.on('input', function(){
+      delay(function(){
+         filter();
+       }, 1000 );
+    });
+  } else {
+    $search.on('keyup', function(){
+       window.setTimeout(filter, 1000);
+    });
+  }*/
+
+}());	
+</script>
+</body>
+</html>

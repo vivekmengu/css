@@ -1,0 +1,156 @@
+<html>
+<head>
+<style>
+    .navbox ul {
+    position: relative;
+    margin: 0px;
+    /*margin-left: 14.2%;*/
+    clear: left;
+}
+.navbox ul li {
+    vertical-align: top;
+    margin-bottom: 40px;
+    /*border: 1px solid red;*/
+    width: 100%;
+    position: relative;
+    /*height: 17px;*/
+    /*border: 1px solid red;*/
+}
+/**/
+ .navbox ul li a, .navbox ul li a:visited {
+    text-decoration: none;
+    /*font-weight: bold;*/
+    text-transform: uppercase;
+    color: #36395d;
+}
+.navbox ul li a:active, .navbox ul li a:hover, .navbox ul li a.active {
+    text-decoration: none;
+    /*font-weight: bold;*/
+    // color: #000;
+    border:1px solid #000;
+    text-transform: uppercase;
+}
+/*Submenu*/
+ .navbox li ul {
+    display: none;
+}
+.navbox ul li:hover ul {
+    display: block;
+    position: relative;
+    height: auto;
+    /*border: 1px solid red;*/
+    /*padding-bottom: 0px;*/
+}
+.navbox ul li:hover ul li a:visited, .navbox ul li:hover ul li a {
+    color: #67b4a7;
+}
+.navbox ul li:hover ul li a:active, .navbox ul li:hover ul li a:hover, .navbox ul li:hover ul li a.active {
+    color: #fff;
+}
+.navbox li ul li:not(:last-child) {
+    position: relative;
+    margin: 10px 0;
+}
+/*.navbox li ul li:last-child {margin-bottom:0px;
+}*/
+    
+</style>
+</head>
+<body>
+
+<div class="nav-btn"> <span>  </span>
+
+    <div class="navbox">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a> 
+                </li>
+                <li><a href="#">Collection</a>
+
+                    <ul>
+                        <li><a href="#">Jeans</a>
+
+                        </li>
+                        <li><a href="#">Chinos</a>
+
+                        </li>
+                        <li><a href="#">Shorts</a>
+
+                        </li>
+                        <li><a href="#">Shirts</a>
+
+                        </li>
+                        <li><a href="#">T-Shirts</a>
+
+                        </li>
+                        <li><a href="#">Jackets</a>
+
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#">About Us</a>
+
+                </li>
+                <li><a href="#">Store Locator</a>
+
+                    <ul>
+                        <li><a href="#">North</a>
+
+                        </li>
+                        <li><a href="#">East</a>
+
+                        </li>
+                        <li><a href="#">West</a>
+
+                        </li>
+                        <li><a href="#">South</a>
+
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#">Campaign</a>
+
+                    <ul>
+                        <li><a href="#">Static</a>
+
+                        </li>
+                        <li><a href="#">Moving</a>
+
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#">Reach Us</a> 
+                </li>
+            </ul>
+        </nav>
+    </div> <span id="option">option</span>
+
+</div>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script>
+         //////////////////////////////
+         jQuery(document).ready(function($) {
+            
+     $(".navbox > li").each(function () {
+         $(this).has("ul").each(function (d) {
+             $("#option").text($(d.target).text());
+             if ($(d.target).children().length < 1) {
+                 $(this).toggle(function () {
+                     //$("#option").text($(d.target).text());
+                    // alert($(this).target.text());
+                     $(this).show(300);
+                 });
+
+                 //function () {
+                 //    //$("#option").text($(d.target).text());
+                 //
+                 //   // alert($(d.target).text());
+                 //    $(this).find("ul").hide(300);
+                 //});
+             }
+         });
+     });
+     });
+</script>
+</body>
+</html>

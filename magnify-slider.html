@@ -1,0 +1,108 @@
+<html>
+<head>
+	<title>
+		<style>
+.gallery { list-style: none; }
+.gallery li { float: left; margin: 0 2px; }
+
+/* pager */
+.mfp-pager { width: 100%; position: absolute; z-index: 20; top: 0px; left: 0; right: 0; margin: 0 auto; text-align: center; overflow: hidden; }
+.mfp-pager::after { clear: both; display: block; content: ''; }
+.mfp-pager li { padding: 0; margin: 0; display: inline-block; }
+.mfp-pager .arrow_next,
+.mfp-pager .arrow_prev { display: inline-block; }
+.mfp-pager .arrow_next button,
+.mfp-pager .arrow_prev button { vertical-align: middle; border: none; }
+.mfp-pager li .arrow { position: relative; top: 2px; padding: 0; margin: 0; display: inline-block; background: url(/temas/claraboia/html/img/sprite.png) no-repeat; width: 18px; height: 11px; text-indent: -9999px; border: none; cursor: pointer; position: relative; }
+.mfp-pager li .prev { background-position: -20px -22px; }
+.mfp-pager li .next { background-position: -20px -40px; }
+.mfp-pager .dots { vertical-align: top; text-align: center; display: inline-block; margin: 0 8px; position: relative; }
+.mfp-pager .dots li { display: inline-block; margin: 0 2px; }
+.mfp-pager .dots li a { display: block; width: 15px; height: 15px; background: #666; text-indent: -9999px; padding: 5px; margin: 0; cursor: pointer; border: none; }
+.mfp-pager .dots li.active { border: 2px solid red; }
+		</style>
+
+	</title>
+</head>
+<body>
+	<div class="container">
+		<ul class="gallery">
+			<li>
+				<a href="http://placehold.it/1024x360/7964a7" title="Foto 1">
+					<img src="http://placehold.it/500x150/7964a7" alt="Foto 1">
+				</a>
+			</li>
+			<li>
+				<a href="http://placehold.it/1024x360/95dce7" title="Pic 2">
+					<img src="http://placehold.it/500x150/95dce7" alt="Pic 2">
+				</a>
+			</li>
+			<li>
+				<a href="http://placehold.it/1024x360" title="Pic 3">
+					<img src="http://placehold.it/500x150" alt="Pic 3">
+				</a>
+			</li>
+			<li>
+				<a href="http://placehold.it/1024x360/9ee795" title="Pic 4">
+					<img src="http://placehold.it/500x150/9ee795" alt="Pic 4">
+				</a>
+			</li>
+			<li>
+				<a href="http://placehold.it/1024x360/e7e095" title="Pic 5">
+					<img src="http://placehold.it/500x150/e7e095" alt="Pic 5">
+				</a>
+			</li>
+			<li>
+				<a href="http://placehold.it/1024x360/c85799" title="Pic 6">
+					<img src="http://placehold.it/500x150/c85799" alt="Pic 6">
+				</a>
+			</li>
+		</ul>
+	</div>
+	<script src="http://localhost/jquery.js"></script>
+	<script>
+	$('.gallery').magnificPopup({
+		delegate: 'a',
+		type: 'image',
+		tLoading: 'Loading image #%curr%...',
+		mainClass: 'mfp-img-mobile',
+		gallery: {
+			enabled: true,
+			navigateByImgClick: true,
+			preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+		},
+		image: {
+			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+			titleSrc: function(item) {
+				//return //item.el.attr('title');
+				var $gallery = $('.gallery');
+				var $result = '';
+				if ($gallery.find('li').length>0) {
+					$result = '<div class="mfp-pager">' + 
+						'<div class="arrow_prev">' +
+							'<button type="button" class="prev arrow" onclick="javascript:$(\'.gallery\').magnificPopup(\'prev\');return false;">Previous</button>' +
+						'</div>' + 
+						'<div class="dots">' +
+							'<ul class="dots" style="display: inline-block;">';
+					for (var i=0; i<$gallery.find('li').length; i++) {
+						var $cl_active = '';
+						if (item.index == i) $cl_active = ' class="active"'; else $cl_active = '';
+						var $thumb = $gallery.find('li:eq('+i+')').find('img').attr('src');
+						$result += '<li'+$cl_active+'>' +
+								'<button type="button" onclick="javascript:$(\'.gallery\').magnificPopup(\'goTo\', '+i+');return false;">' + i + '</button>' +
+							'</li>';
+					}
+					$result += '</ul>' +
+						'</div>' +
+						'<div class="arrow_next">' +
+							'<button type="button" class="next arrow" onclick="javascript:$(\'.gallery\').magnificPopup(\'next\');return false;">Next</button>' +
+						'</div>' +
+					'</div>';
+				}
+				return $result;
+			}
+		}
+	});
+	</script>
+</body>
+</html>

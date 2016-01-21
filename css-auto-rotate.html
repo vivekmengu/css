@@ -1,0 +1,579 @@
+<html>
+<head>
+<style>
+
+@import url(http://fonts.googleapis.com/css?family=Neuton|Raleway|Open+Sans|Merriweather);
+@import url(http://weloveiconfonts.com/api/?family=fontawesome|zocial);
+/* zocial */
+[class*="zocial-"]:before {
+  font-family: 'zocial', sans-serif;
+}
+
+/* fontawesome */
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+body {
+  background: #EFEFEF;
+  margin: 0 auto;
+  width: 50em;
+  color: #444;
+  font-family: "proxima-nova-alt";
+  font-size: 18px;
+  line-height: 28px;
+}
+body html {
+  font-size: 112.5%;
+  line-height: 1.55556em;
+}
+
+h1 {
+  padding-top: 84px;
+  padding-bottom: 56px;
+  font-family: "quatro-slab";
+  font-size: 2.25em;
+  font-weight: 700;
+  line-height: 1.5em;
+}
+
+h2 {
+  padding-top: 56px;
+  padding-bottom: 42px;
+  font-family: "quatro-slab";
+  font-size: 1.5em;
+  font-weight: 700;
+  line-height: 1.5em;
+}
+
+h3 {
+  padding-top: 56px;
+  padding-bottom: 42px;
+  font-family: "quatro-slab";
+  font-size: 1.125em;
+  font-weight: 700;
+  line-height: 1.5em;
+}
+
+a {
+  border-bottom: 1px dashed #666;
+  color: #444;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+a:hover {
+  border-bottom: 1px solid #666;
+}
+
+p {
+  padding-bottom: 28px;
+}
+
+blockquote {
+  padding-top: 28px;
+  margin: 0 4em;
+  font-family: "Merriweather";
+  font-style: italic;
+}
+
+blockquote p {
+  padding-bottom: 0;
+}
+
+blockquote footer {
+  padding-bottom: 56px;
+  font-family: "Raleway";
+  font-size: 0.75em;
+  font-style: normal;
+  text-align: right;
+}
+
+.teaser {
+  line-height: 1.875em;
+  font-size: 1.25em;
+  font-weight: 700;
+}
+
+.team-box {
+  display: inline-block;
+  margin: 1em auto;
+  width: 28%;
+  vertical-align: top;
+}
+
+.team-box header {
+  margin-bottom: 1em;
+  position: relative;
+}
+
+.team-box p,
+.team-box .social {
+  padding: 0 0 0 0;
+  text-align: center;
+}
+
+.team-box-wrapper {
+  margin: 0 auto;
+}
+
+.img-wrapper-team {
+  background: transparent url(http://lorempixum.com/200/200/people) no-repeat;
+  border-radius: 100em;
+  -moz-box-shadow: rgba(255, 255, 255, 0.4) 0 0 0 0.5em inset;
+  -webkit-box-shadow: rgba(255, 255, 255, 0.4) 0 0 0 0.5em inset;
+  box-shadow: rgba(255, 255, 255, 0.4) 0 0 0 0.5em inset;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 8em;
+  height: 8em;
+  -moz-transition-property: box-shadow, color;
+  -o-transition-property: box-shadow, color;
+  -webkit-transition-property: box-shadow, color;
+  transition-property: box-shadow, color;
+  -moz-transition-duration: 0.75s;
+  -o-transition-duration: 0.75s;
+  -webkit-transition-duration: 0.75s;
+  transition-duration: 0.75s;
+}
+
+.img-wrapper-team:hover {
+  -moz-box-shadow: rgba(255, 255, 255, 0.75) 0 0 0 6px inset, #911D3C 0 0 0 8px inset, rgba(255, 255, 255, 0.75) 0 0 0 10em inset;
+  -webkit-box-shadow: rgba(255, 255, 255, 0.75) 0 0 0 6px inset, #911D3C 0 0 0 8px inset, rgba(255, 255, 255, 0.75) 0 0 0 10em inset;
+  box-shadow: rgba(255, 255, 255, 0.75) 0 0 0 6px inset, #911D3C 0 0 0 8px inset, rgba(255, 255, 255, 0.75) 0 0 0 10em inset;
+}
+.img-wrapper-team:hover .team-box-position {
+  display: block;
+  top: 2.5em;
+  left: 3.55em;
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+.team-box-position {
+  padding: 0em;
+  margin: 0;
+  overflow: hidden;
+  position: absolute;
+  max-width: 5em;
+  top: 2.7em;
+  left: 3.5em;
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -moz-transition-property: -moz-transform;
+  -o-transition-property: -o-transform;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: transform;
+  -moz-transition-duration: 0.35s;
+  -o-transition-duration: 0.35s;
+  -webkit-transition-duration: 0.35s;
+  transition-duration: 0.35s;
+  color: #911D3C;
+  font-size: 0.875em;
+  font-variant: small-caps;
+  line-height: 1.1em;
+}
+
+.team-box-position:before,
+.team-box-position:after {
+  display: block;
+  content: "\f00d \f00d \f00d";
+  color: #bc264e;
+  font-family: "fontawesome";
+  font-size: 0.6em;
+}
+
+ul,
+ol {
+  padding-bottom: 42px;
+  margin-left: 3em;
+  padding-left: 1em;
+  list-style-position: outside;
+}
+
+ul li {
+  list-style-type: square;
+}
+
+ol li {
+  list-style-type: decimal;
+}
+
+button {
+  cursor: pointer;
+  background: #EFEFEF;
+  border: 1px solid #911D3C;
+  border-radius: none;
+  padding: 0.875em 1.25em;
+  margin: 0;
+  min-width: 6em;
+  color: #911D3C;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  -moz-transition-property: box-shadow, color;
+  -o-transition-property: box-shadow, color;
+  -webkit-transition-property: box-shadow, color;
+  transition-property: box-shadow, color;
+  -moz-transition-duration: 0.15s;
+  -o-transition-duration: 0.15s;
+  -webkit-transition-duration: 0.15s;
+  transition-duration: 0.15s;
+}
+
+button:hover {
+  -moz-box-shadow: #911D3C 0 3.25em 0 0 inset;
+  -webkit-box-shadow: #911D3C 0 3.25em 0 0 inset;
+  box-shadow: #911D3C 0 3.25em 0 0 inset;
+  color: #EFEFEF;
+}
+
+button:active {
+  -moz-box-shadow: #bc264e 0 3em 0 0 inset;
+  -webkit-box-shadow: #bc264e 0 3em 0 0 inset;
+  box-shadow: #bc264e 0 3em 0 0 inset;
+  border: 1px solid #d12a56;
+}
+
+.product-box-wrapper {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.product-box {
+  display: block;
+  padding: 1em 0 2em 0;
+  margin: 1em;
+}
+.product-box h2 {
+  padding-top: 1em;
+  padding-bottom: 0;
+}
+.product-box .teaser {
+  padding-bottom: 0.5em;
+  margin-bottom: 0.5em;
+  line-height: 1.5em;
+}
+
+.product-img-wrapper {
+  background: transparent url(http://lorempixum.com/200/200/technics) no-repeat;
+  border-radius: 100em;
+  -moz-box-shadow: rgba(255, 255, 255, 0.4) 0 0 0 0.5em inset;
+  -webkit-box-shadow: rgba(255, 255, 255, 0.4) 0 0 0 0.5em inset;
+  box-shadow: rgba(255, 255, 255, 0.4) 0 0 0 0.5em inset;
+  display: inline-block;
+  float: left;
+  margin-top: 1.75em;
+  margin-right: 1em;
+  width: 8em;
+  height: 8em;
+  -moz-transition-property: box-shadow;
+  -o-transition-property: box-shadow;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  -moz-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+}
+.product-img-wrapper:hover {
+  -moz-box-shadow: #911D3C 0 0 0 1px inset, rgba(255, 255, 255, 0.75) 0 0 0 10em inset;
+  -webkit-box-shadow: #911D3C 0 0 0 1px inset, rgba(255, 255, 255, 0.75) 0 0 0 10em inset;
+  box-shadow: #911D3C 0 0 0 1px inset, rgba(255, 255, 255, 0.75) 0 0 0 10em inset;
+}
+
+.product-text-wrapper {
+  position: relative;
+  margin-left: 10em;
+}
+.product-text-wrapper .product-img {
+  background: transparent url(http://lorempixum.com/700/400/technics) no-repeat;
+  background-position: center;
+  background-size: 100%;
+  overflow: hidden;
+  margin-bottom: 1.5em;
+  width: 700px;
+  height: 400px;
+  -moz-transition-property: background-size;
+  -o-transition-property: background-size;
+  -webkit-transition-property: background-size;
+  transition-property: background-size;
+  -moz-transition-duration: 0.1s;
+  -o-transition-duration: 0.1s;
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+}
+
+.product-img-caption {
+  background-color: rgba(145, 29, 60, 0.75);
+  padding: 4em;
+  height: 400px;
+  color: #DDD;
+  font-style: italic;
+  text-align: center;
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+
+.product-img:hover {
+  background-size: 120%;
+  -moz-transition-property: background-size;
+  -o-transition-property: background-size;
+  -webkit-transition-property: background-size;
+  transition-property: background-size;
+  -moz-transition-duration: 4s;
+  -o-transition-duration: 4s;
+  -webkit-transition-duration: 4s;
+  transition-duration: 4s;
+}
+
+.product-img:hover .product-img-caption {
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+.slider-wrapper {
+  background: #444;
+  border: 5px solid #DDD;
+  -moz-box-shadow: 0 0 0 1px #444;
+  -webkit-box-shadow: 0 0 0 1px #444;
+  box-shadow: 0 0 0 1px #444;
+  display: inline-block;
+  float: left;
+  margin: 3.5em 0 0 0;
+  overflow: visible;
+  position: relative;
+  width: 400px;
+  height: 300px;
+}
+.slider-wrapper li {
+  list-style: none;
+  position: absolute;
+  left: -400px;
+  width: 400px;
+  height: 300px;
+}
+.slider-wrapper li a {
+  border-bottom: none;
+}
+.slider-wrapper ul {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  position: relative;
+}
+
+.slider-mask {
+  height: 300px;
+  overflow: hidden;
+}
+
+@-webkit-keyframes slider-animation-1 {
+  0% {
+    left: 0px;
+  }
+  4% {
+    left: 0px;
+  }
+  16% {
+    left: 0px;
+    z-index: 0;
+  }
+  20% {
+    left: 400px;
+    z-index: 0;
+  }
+  21% {
+    left: -400px;
+    z-index: -1;
+  }
+  92% {
+    left: -400px;
+    z-index: 0;
+  }
+  96% {
+    left: -400px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+@-webkit-keyframes slider-animation-2 {
+  0% {
+    left: -400px;
+  }
+  16% {
+    left: -400px;
+  }
+  20% {
+    left: 0px;
+  }
+  24% {
+    left: 0px;
+  }
+  36% {
+    left: 0px;
+    z-index: 0;
+  }
+  40% {
+    left: 400px;
+    z-index: 0;
+  }
+  41% {
+    left: -400px;
+    z-index: -1;
+  }
+  100% {
+    left: -400px;
+    z-index: -1;
+  }
+}
+@-webkit-keyframes slider-animation-3 {
+  0% {
+    left: -400px;
+  }
+  36% {
+    left: -400px;
+  }
+  40% {
+    left: 0px;
+  }
+  44% {
+    left: 0px;
+  }
+  56% {
+    left: 0px;
+  }
+  60% {
+    left: 400px;
+    z-index: 0;
+  }
+  61% {
+    left: -400px;
+    z-index: -1;
+  }
+  100% {
+    left: -400px;
+    z-index: -1;
+  }
+}
+@-webkit-keyframes slider-animation-4 {
+  0% {
+    left: -400px;
+  }
+  56% {
+    left: -400px;
+  }
+  60% {
+    left: 0px;
+  }
+  64% {
+    left: 0px;
+  }
+  76% {
+    left: 0px;
+    z-index: 0;
+  }
+  80% {
+    left: 400px;
+    z-index: 0;
+  }
+  81% {
+    left: -400px;
+    z-index: -1;
+  }
+  100% {
+    left: -400px;
+    z-index: -1;
+  }
+}
+@-webkit-keyframes slider-animation-5 {
+  0% {
+    left: -400px;
+  }
+  76% {
+    left: -400px;
+  }
+  80% {
+    left: 0px;
+  }
+  84% {
+    left: 0px;
+  }
+  96% {
+    left: 0px;
+    z-index: 0;
+  }
+  100% {
+    left: 400px;
+    z-index: 0;
+  }
+}
+.first-animation {
+  -webkit-animation: slider-animation-1 25s linear infinite;
+}
+
+.second-animation {
+  -webkit-animation: slider-animation-2 25s linear infinite;
+}
+
+.third-animation {
+  -webkit-animation: slider-animation-3 25s linear infinite;
+}
+
+.fourth-animation {
+  -webkit-animation: slider-animation-4 25s linear infinite;
+}
+
+.fifth-animation {
+  -webkit-animation: slider-animation-5 25s linear infinite;
+}
+
+.project-text-wrapper {
+  margin-left: 24em;
+  position: relative;
+}
+.project-text-wrapper h2 {
+  padding-bottom: 0;
+}
+
+</style>
+</head>
+<body>
+
+<div class="slider-wrapper">
+  <div class="slider-mask">
+    <ul>
+      <li id="first" class="first-animation">
+        <a href="#"><img src="http://lorempixum.com/400/300/people/" alt="Picture 1"/></a>
+      </li>
+      <li id="second" class="second-animation">
+        <a href="#"><img src="http://lorempixum.com/400/300/fashion/" alt="Picture 2"/></a>
+      </li>
+      <li id="third" class="third-animation">
+        <a href="#"><img src="http://lorempixum.com/400/300/technics/" alt="Picture 3"/></a>
+      </li>
+      <li id="fourth" class="fourth-animation">
+        <a href="#"><img src="http://lorempixum.com/400/300/abstract/" alt="Picture 4"/></a>
+      </li>
+      <li id="fifth" class="fifth-animation">
+        <a href="#"><img src="http://lorempixum.com/400/300/cats/" alt="Picture 5"/></a>
+      </li>
+    </ul>
+  </div>
+</div>  <!-- End Slider Container -->
+<div class="project-text-wrapper">
+  <h2>Rolling Stone Germany</h2>
+  <p class="teaser">HTML5 und Adobe DPS</p>
+  <p>Wir unterstützen die Axel Springer Mediahouse Berlin GmbH bei der Produktion der iPad-Magazine für den deutschen Rolling Stone. Als erste Rolling-Stone-App überhaupt realisiert der Produktmanager Remco Meyer ein Vorzeigeprojekt für die ganze Welt.</p>
+  <button type="button">Read more about the project</button>
+</div>
+
+</body>
+</html>

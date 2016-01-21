@@ -1,0 +1,125 @@
+<html>
+<head>
+<style>
+body {
+  background: #ccc;
+  width: 950px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.slider {
+  background: #111;
+  width: 950px;
+  height: 350px;
+  padding: 10px;
+  position: relative;
+  top: 10px;
+  box-shadow: 0 30px 50px -20px black;
+  overflow: hidden;
+}
+
+.images {
+  background: #ccc;
+  width: 100%;
+  height: 74%;
+  transition: background .5s linear;
+  /*animation: slideshow 10s steps(1, start);*/
+}
+
+input[type='radio'] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #444;
+  background-size: 225px 70px;
+  width: 225px;
+  height: 70px;
+  margin: 5px;
+  cursor: pointer;
+  position: relative;
+  float: left;
+  top: 270px;
+  -webkit-filter: sepia();
+}
+input[type='radio']:checked {
+  content: '';
+  border: solid 5px #ccc;
+  box-shadow: none;
+  -webkit-filter: none;
+}
+
+input[type='radio']:hover{
+  border: solid 5px #fff;
+  -webkit-filter: none;
+  transform: scale(1.05);
+  z-index: 9999;
+}
+
+.slide1 {
+  background: url(http://iweb.uz/azik/wp-content/uploads/2012/10/samarkand1.jpg);
+}
+
+.slide2 {
+  background: url(http://iweb.uz/azik/wp-content/uploads/2012/10/samarkand2.jpg);
+}
+
+.slide3 {
+  background: url(http://iweb.uz/azik/wp-content/uploads/2012/10/samarkand3.jpg);
+}
+
+.slide4 {
+  background: url(http://iweb.uz/azik/wp-content/uploads/2012/10/samarkand4.jpg);
+}
+
+.slide1:checked ~ .images {
+  background: url(http://iweb.uz/azik/wp-content/uploads/2012/10/samarkand1.jpg);
+}
+
+.slide2:checked ~ .images {
+  background: url(http://iweb.uz/azik/wp-content/uploads/2012/10/samarkand2.jpg);
+}
+
+.slide3:checked ~ .images {
+  background: url(http://iweb.uz/azik/wp-content/uploads/2012/10/samarkand3.jpg);
+}
+
+.slide4:checked ~ .images {
+  background: url(http://iweb.uz/azik/wp-content/uploads/2012/10/samarkand4.jpg);
+}
+
+h3{
+  color: #000;
+  font-family: 'Courier';
+  margin: 30px -15px 0 0;
+  text-align: right;
+  text-shadow: 2px 2px 2px #fff;
+}
+
+h3 a{
+  color: #000;
+  text-decoration: none;
+}
+
+/*@keyframes slideshow{
+  25%{background: url(http://iweb.uz/azik/wp-content/uploads/2012/10/samarkand2.jpg)}
+  50%{background: url(http://iweb.uz/azik/wp-content/uploads/2012/10/samarkand3.jpg)}
+  75%{background: url(http://iweb.uz/azik/wp-content/uploads/2012/10/samarkand4.jpg)}
+}*/
+
+</style>
+</head>
+<body>
+<div class='slider'>
+  <input checked='' class='slide1' name='thumbnail' type='radio' />
+  <input class='slide2' name='thumbnail' type='radio' />
+  <input class='slide3' name='thumbnail' type='radio' />
+  <input class='slide4' name='thumbnail' type='radio' />
+  <div class='images'></div>
+</div>
+<h3>
+  created by
+  <a href='https://twitter.com/samarkandiy' target='_blank'>@samarkandiy</a>
+</h3>
+
+</body>
+</html>

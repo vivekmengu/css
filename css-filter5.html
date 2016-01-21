@@ -1,0 +1,231 @@
+<html>
+<head>
+	<title></title>
+	<style>
+	body {
+  background-color: #F79F94;
+}
+.mycontainer {
+  width: 295px;
+  margin: 0 auto; 
+}
+.header-options {
+  display: block;
+  height: 52px;
+}
+.header-options ul {
+  display: block;
+  list-style-type: none;
+  color: white;
+  background-color: transparent;
+  padding: 0;
+}
+.header-options ul li {
+  box-sizing: border-box;
+  float: left;
+  display: inline;
+  background-color: #F47564;
+  padding: 16px 32px 16px 32px;
+  border-right: solid 1px #F79F94;
+  position: relative;
+  cursor: pointer;
+}
+.search-area {
+  width: 289px;
+  background-color: white;
+  height: 50px;
+  margin-right: 4px;
+  padding-right: 10px;
+  padding-left: 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+.search-area input {
+  height: 25px;
+  width: 233px !important;
+  margin-top: 13px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border:1px solid rgb(228,224,225);
+  border-left-style: none;
+  box-shadow: none;
+}
+.search-area span {
+  color: rgb(228,224,225);
+  background-color: white;
+  border:1px solid rgb(228,224,225);
+  height: 25px;
+  width: 35px;
+  display: inline;
+  margin-top: 12px;
+  line-height: 10px;
+  float: left;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-right-style: none;
+}
+hr {
+  margin: 0;
+  width: 289px;
+  color: rgb(228,224,225);
+}
+.user-list {
+  width: 289px;
+  background-color: white;
+  padding: 10px;
+  list-style-type: none;
+}
+.user-list li {
+  cursor: pointer;
+  height: 75px;
+  width: 100%;
+}
+input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border:1px solid rgb(228,224,225) !important;
+  border-left-style: none !important;
+}
+
+.selected:before {
+  content: '';
+  position: absolute;
+  display: inline;
+  top: 100%;
+  left: 40%;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 10px solid #F47564;
+  z-index: 999;
+}
+.info {
+  display: inline-block;
+  width: 65%;
+  margin-left: 5px;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.name {
+  font-size: 1.25em;
+  color: #F47564;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.logo {
+  display: inline-block;
+  width: 25%;
+  border-radius: 50%;
+}
+.status {
+  font-size: .75em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #c2bbbe;
+}
+.glyphicon-ok {
+  color: #8fd7d6;
+}
+.glyphicon-exclamation-sign {
+  color: #F47564;
+}</style>
+</head>
+<body>
+<div class="mycontainer"><div class="header-options"><ul>
+      <li class="selected">All</li>
+      <li>Online</li>
+      <li>Offline</li>
+    </ul>
+  </div>
+  <div class="search-area input-group">
+    <span class="input-group-addon glyphicon glyphicon-search"></span>
+    <input type="text" class="form-control"/>
+  </div>
+  <hr/>
+  <div>
+    <ul class="user-list">
+    </ul>
+  </div>
+  </div>
+</div>
+	<script src="http://localhost/jquery.js"></script>
+	<script>
+	$(document).ready(function() {
+  var arrayOfChannels = ["freecodecamp", "storbeck", "terakilobyte", "habathcx","RobotCaleb","thomasballinger","noobs2ninjas","beohoff","kindafunnygames","bobross", "MedryBW"];
+  var indexer = 0;
+  var isOnline = [];
+  function getOnlineStatus(array, cb){
+    $.ajax({
+      dataType: "json",
+      url: 'https://api.twitch.tv/kraken/streams?channel=' + arrayOfChannels.join(",")
+    }).done(function(data){
+      data.streams.forEach(function(item) {
+        isOnline.push(item.channel.display_name);
+      })
+      cb(array);
+    });
+  }
+  function filter(){
+    var onlineStatus = $('.selected').text();
+    var arr = $('.user-list li');
+    for(var i = 0; i < arr.length; i++) {
+      $(arr[i]).removeClass('hidden');
+        var statusText = $(arr[i]).children('.online-status').hasClass('glyphicon-ok');
+        if(onlineStatus === 'Online' && !statusText) {
+          $(arr[i]).addClass('hidden');
+        } else if(onlineStatus === 'Offline' && statusText) {
+          $(arr[i]).addClass('hidden');
+        }
+      
+        var name = $(arr[i]).children('.info').children('.name').text()
+        var myRegEx = new RegExp($('.search-area input').val(), "gi");
+        if(!myRegEx.test(name)){
+          $(arr[i]).addClass('hidden');
+        }
+      }
+  }
+  function addChannelToList(channel) {
+    //onclick="window.open('http://google.pl', '_blank');"
+      var status = isOnline.indexOf(channel.display_name) !== -1 ? channel.status : "";
+      var icon = isOnline.indexOf(channel.display_name) !== -1 ? "glyphicon-ok" : "glyphicon-exclamation-sign";
+      var logo = channel.logo !== null ? channel.logo : "http://placehold.it/50x50";
+      var html = '';
+        html += '<li>';
+        html += '<img class="logo" src="' + logo + '"/>';
+        html += '<div class="info">';
+        html += '<div class="name">' + channel.display_name + '</div>';
+        html += '<div class="status">' + status + '</div>';
+        html += '</div>';
+        html += '<div class="online-status glyphicon ' + icon + '"></div>';
+        html += '</li>';
+    $('.user-list').append(html);
+    indexer++
+    if(indexer === arrayOfChannels.length){
+      $('.user-list li').on('click', function(){
+        window.open('https://twitch.tv/' + $(this).children('.info').children('.name').text(), '_blank');
+      });
+      $('.header-options li').on('click', function(){
+        $('.header-options li').removeClass('selected');
+        $(this).addClass('selected');
+        filter();
+      });
+      $('.search-area input').on('keyup', function(){
+        filter();
+      });
+    }
+  }
+  function getInfo(array){
+    array.forEach(function(item){
+      $.ajax({
+        dataType: "json",
+        url: 'https://api.twitch.tv/kraken/channels/' + item
+      }).done(function(data){
+        addChannelToList(data);
+      });
+    });
+  }
+  getOnlineStatus(arrayOfChannels, getInfo);
+})</script>
+</body>
+</html>
