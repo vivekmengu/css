@@ -45,9 +45,8 @@ section {
   display: none;
   padding: 10px 0 0;
   position:absolute;
-  width:80%;
   top:0px;
-  right:0px;
+  left:170px;
 }
 
 input {
@@ -62,7 +61,7 @@ label {
   text-align: left;
   color: #bbb;
   border: 1px solid transparent;
-  width:140px;
+  width:150px;
   border-right:1px solid #ccc;
 }
 
@@ -93,6 +92,9 @@ label:hover {
   cursor: pointer;
 }
 
+input:checked + label:first-child {
+	border-top:0px;
+}
 input:checked + label {
   color: #555;
   border: 1px solid #ddd;

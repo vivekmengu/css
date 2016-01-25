@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	* {
+  
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  
+}
+body {
+  
+  background:#efeefe;
+  font:14px "Open Sans",arial,sans-serif;
+ 
+}
+
+h1 {text-align:center;color:#656565;padding-top:30px;}
+
+.slider {
+
+  width:720px;
+  height:360px;
+  overflow:hidden;
+  margin:30px auto;
+  box-shadow:2px 4px 10px rgba(125,125,125, 0.8);
+}
+
+.slider ul {
+ 
+  list-style-type:none;
+  width:30000px;
+}
+
+.slider ul li {
+  position:relative;
+  display:block;
+  float:left;
+  width:180px;
+  border-left:1px solid rgba(145,145,145, 0.6);  
+  box-shadow:0 0 20px 1px rgba(22,22,22, 0.5);
+  
+  -webkit-transition:all 0.5s ease;
+  -moz-transition:all 0.5s ease;
+  transition:all 0.5s ease;
+}
+
+
+
+.slider ul:hover li {
+  width:40px;
+}
+
+.slider ul li:hover {
+  
+  width:600px;
+}
+
+.slider li img {
+  
+  display:block;
+}
+
+.title {
+  
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:600px;
+  background:rgba(22,22,22,0.4);
+  
+}
+
+.title a {
+  display:block;
+  padding:20px;
+  color:white;
+  font:18px;
+  text-decoration:none;
+  
+  
+}
+	</style>
+</head>
+<body>
+	<h1>CSS3 Accordion Slider</h1>
+
+<div class="slider">
+  
+  <ul>
+    
+    <li>
+      <div class="title"><a href="#">Sports Photos</a></div>
+      <img src="http://lorempixel.com/600/360/sports" /> 
+    </li>
+     <li>
+      <div class="title"><a href="#">Food Photos</a></div>
+       <img src="http://lorempixel.com/600/360/food" /> 
+    </li>
+     <li>
+       <div class="title"><a href="#">Fashion Frame</a></div>
+       <img src="http://lorempixel.com/600/360/fashion" />      
+      
+    </li>
+     <li>
+      <div class="title"><a href="#">Animal Pictures</a></div>
+       <img src="http://lorempixel.com/600/360/animals" /> 
+    </li>
+    
+    
+  </ul>
+  
+  
+</div>
+</body>
+</html>
