@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	body{
+  background: #f7f7f7;
+  width: 460px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: "Verdana";
+  font-size: 13px;
+  
+}
+.block{
+  background: linear-gradient(#111, #333);
+  color: #fff;
+  padding-top: 5px;
+  box-shadow: 0 1px 2px #ccc;
+}
+
+.block input[type='radio']:checked ~ .info{
+  height: 130px;
+  transition: .3s ease-in;
+}
+
+input[type='radio']{
+  width: 100%;
+  display: none;
+}
+
+label{
+  width: 450px;
+  max-width: 100%;
+  cursor: pointer;
+}
+
+span{
+  font-family: 'Arial';
+  font-weight: bold;
+  display: block;
+  padding: 10px 12px 12px 15px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.info{
+  background: #fff;
+  color: #222;
+  width: 100%;
+  height: 0;
+  line-height: 2;
+  padding-left: 15px;
+  display: block;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: .3s ease-out;
+} 
+
+h4{
+  color: #111;
+  text-align: right;
+  text-shadow: 2px 2px 3px #fff;
+  position: absolute;
+  bottom: 20px;
+  right: 15px;
+}
+
+h4 a{
+  color: #111;
+  text-decoration: none;
+}
+
+::selection{
+  background: #222;
+  color: #fff;
+}
+
+.github img{
+  position: absolute; 
+  top: 0; 
+  right: 0; 
+  border: 0;
+}
+	</style>
+</head>
+<body>
+	<div class="block">
+  <input type="radio" name="city" id="cityA" checked />   
+  <label for="cityA"><span>Samarkand</span></label>
+  <div class="info">
+    <p>Samarkand is the second-largest city in Uzbekistan and the capital of Samarqand Province. The city is most noted for its central position on the Silk Road between China and the West, and for being an Islamic centre for scholarly study.
+    </p>
+  </div>
+</div>
+<div class="block">
+  <input type="radio" name="city" id="cityB"/>
+  <label for="cityB"><span>Tashkent</span></label>
+  <div class="info">
+    <p>Tashkent is the capital of Uzbekistan and of the Tashkent Province. The officially registered population of the city in 2008 was about 2.2 million. Unofficial sources estimate the actual population may be as much as 4.45 million.</p>
+  </div>
+</div>
+<div class="block">
+  <input type="radio" name="city" id="cityC" />
+  <label for="cityC"><span>Bukhara</span></label>
+  <div class="info">
+    <p>Bukhara, from the Soghdian βuxārak, is the capital of the Bukhara Province of Uzbekistan. The nation's fifth-largest city, it has a population of 263,400. 
+    </p>  
+  </div>
+</div>
+<h4>follow me 
+    <a href="https://twitter.com/samarkandiy" target="_blank">@samarkandiy</a>
+</h4>
+<a class="github" href="https://github.com/samarkandiy" target="_blank"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+</body>
+</html>
