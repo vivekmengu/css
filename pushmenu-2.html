@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+#container {
+  width: 100%;
+  height: 100%;
+  float: left;
+  overflow-x: hidden;
+}
+.content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 10;
+  min-height: 500px;
+  background: #2c3e50;
+  -webkit-transition: all ease-in-out 0.3s;
+  -moz-transition: all ease-in-out 0.3s;
+  -o-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+}
+#container.pushed .content {
+  -webkit-transform: translate3d(-260px, 0, 0);
+  -moz-transform: translate3d(-260px, 0, 0);
+  -o-transform: translate3d(-260px, 0, 0);
+  -ms-transform: translate3d(-260px, 0, 0);
+  transform: translate3d(-260px, 0, 0);
+}
+#container.pushed nav {
+  -webkit-transform: translate3d(0px, 0, 0);
+  -moz-transform: translate3d(0px, 0, 0);
+  -o-transform: translate3d(0px, 0, 0);
+  -ms-transform: translate3d(0px, 0, 0);
+  transform: translate3d(0px, 0, 0);
+}
+nav {
+  -webkit-transform: translate3d(260px, 0, 0);
+  -moz-transform: translate3d(260px, 0, 0);
+  -o-transform: translate3d(260px, 0, 0);
+  -ms-transform: translate3d(260px, 0, 0);
+  transform: translate3d(260px, 0, 0);
+  -webkit-transition: all ease-in-out 0.3s;
+  -moz-transition: all ease-in-out 0.3s;
+  -o-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+  position: fixed;
+  z-index: 15;
+  right: 0px;
+  top: 0px;
+  background: #000;
+  width: 260px;
+  color: #fff;
+  height: 100%;
+  min-height: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 20px;
+}
+nav ul {
+  float: left;
+  margin-top: 5px;
+}
+nav li {
+  float: left;
+  clear: both;
+  font-family: "Montserrat";
+}
+nav li a {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  color: #666;
+  text-transform: uppercase;
+  -webkit-transition: color ease-in-out 0.1s;
+  -moz-transition: color ease-in-out 0.1s;
+  -o-transition: color ease-in-out 0.1s;
+  transition: color ease-in-out 0.1s;
+}
+nav li a:hover {
+  color: #fff;
+}
+nav li a.selected {
+  color: #fff;
+}
+#menu-toggle {
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  right: 30px;
+  top: 30px;
+  color: #fff;
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4wLjIsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iMjUuNzE3cHgiIGhlaWdodD0iMjMuNDk0cHgiIHZpZXdCb3g9IjAgMCAyNS43MTcgMjMuNDk0IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyNS43MTcgMjMuNDk0IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yLjE0OCw0LjI5MmgyMS40MmMxLjE4NywwLDIuMTQ5LTAuOTYxLDIuMTQ5LTIuMTQ2QzI1LjcxNywwLjk2MSwyNC43NTUsMCwyMy41NjgsMEgyLjE0OA0KCUMwLjk2MiwwLDAsMC45NjEsMCwyLjE0NkMwLDMuMzMxLDAuOTYyLDQuMjkyLDIuMTQ4LDQuMjkyeiIvPg0KPHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTIzLjU2OCw5LjYwMUgyLjE0OEMwLjk2Miw5LjYwMSwwLDEwLjU2MiwwLDExLjc0N2MwLDEuMTg1LDAuOTYyLDIuMTQ2LDIuMTQ4LDIuMTQ2aDIxLjQyDQoJYzEuMTg3LDAsMi4xNDktMC45NjEsMi4xNDktMi4xNDZDMjUuNzE3LDEwLjU2MiwyNC43NTUsOS42MDEsMjMuNTY4LDkuNjAxeiIvPg0KPHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTIzLjU2OCwxOS4yMDJIMi4xNDhDMC45NjIsMTkuMjAyLDAsMjAuMTYzLDAsMjEuMzQ5YzAsMS4xODUsMC45NjIsMi4xNDYsMi4xNDgsMi4xNDZoMjEuNDINCgljMS4xODcsMCwyLjE0OS0wLjk2MSwyLjE0OS0yLjE0NkMyNS43MTcsMjAuMTYzLDI0Ljc1NSwxOS4yMDIsMjMuNTY4LDE5LjIwMnoiLz4NCjwvc3ZnPg0K);
+}
+#nav-close {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: 15px 15px;
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4wLjIsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iMjYuMDExcHgiIGhlaWdodD0iMjUuOTU3cHgiIHZpZXdCb3g9IjAgMCAyNi4wMTEgMjUuOTU3IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyNi4wMTEgMjUuOTU3IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0xNi41NDIsMTIuOTc4bDguNzM2LTguNzE4YzAuOTc3LTAuOTc1LDAuOTc3LTIuNTU1LDAtMy41M2MtMC45NzYtMC45NzQtMi41NjEtMC45NzQtMy41MzcsMGwtOC43MzYsOC43MTgNCglMNC4yNjksMC43MzFjLTAuOTc2LTAuOTc0LTIuNTYxLTAuOTc0LTMuNTM3LDBjLTAuOTc3LDAuOTc1LTAuOTc3LDIuNTU1LDAsMy41M2w4LjczNiw4LjcxOGwtOC43MzYsOC43MTgNCgljLTAuOTc3LDAuOTc1LTAuOTc3LDIuNTU1LDAsMy41M2MwLjQ4OCwwLjQ4NywxLjEyOCwwLjczMSwxLjc2OCwwLjczMWMwLjY0LDAsMS4yOC0wLjI0NCwxLjc2OC0wLjczMWw4LjczNi04LjcxOGw4LjczNiw4LjcxOA0KCWMwLjQ4OCwwLjQ4NywxLjEyOCwwLjczMSwxLjc2OCwwLjczMXMxLjI4LTAuMjQ0LDEuNzY4LTAuNzMxYzAuOTc3LTAuOTc1LDAuOTc3LTIuNTU1LDAtMy41M0wxNi41NDIsMTIuOTc4eiIvPg0KPC9zdmc+DQo=);
+}
+
+	</style>
+</head>
+<body>
+<div id="container">
+  <div class="content">
+    <a href="javascript:;" id="menu-toggle"></a>
+  </div>
+  <nav>
+    <a href="javascript:;" id="nav-close"></a>
+  <ul>
+    <li><a href="#" class="selected">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>  
+  </nav>
+</div>	
+<script src="http://localhost/jquery.js"></script>
+<script>
+$(function(){
+  $("#menu-toggle,#nav-close").click(function(){
+    $("#container").toggleClass("pushed");
+  });
+});
+</script>
+</body>
+</html>

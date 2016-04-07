@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.navulist {
+			    position: absolute;
+    left: 1px;
+    text-align: left;
+    padding: 0;
+    width: 150px;
+		}
+		.navulist li {
+			    padding: 10px 3px;
+    background-color: red;
+    margin-bottom: 2px;
+    /* left: 0; */
+    cursor: pointer;
+    width: 0px;
+    height: 15px;
+    text-align: center;
+		}
+		.navulist li a {
+			font-size: 0;
+			opacity: 0;
+		/*text-indent: -9999px;*/
+		}
+		.navulist li:hover {
+			width: 150px;
+		-webkit-transition: width 0.5s ease-in-out;
+    -moz-transition: width 0.5s ease-in-out;
+    -o-transition: width 0.5s ease-in-out;
+    transition: width 0.5s ease-in-out;
+		}
+		.navulist li:hover > a {
+			opacity: 1;
+			text-decoration: none;
+			color: white;
+			padding: 5px 20px;
+			font-size: 13px;
+					-webkit-transition: opacity 0.6s ease-in-out;
+    -moz-transition:  opacity 0.6s ease-in-out;
+    -o-transition:  opacity 0.6s ease-in-out;
+    transition:  opacity 0.6s ease-in-out;
+		}
+
+
+		.seperator {
+    padding: 30px 0;
+    border-width: 0 0 1px 0;
+    -moz-border-image: -moz-linear-gradient(right, #fff 5%,green 15%, green 85%, #fff 95%);
+    -webkit-border-image: -webkit-linear-gradient(right, #fff 5%,green 15%, green 85%, #fff 95%);
+    border-image: linear-gradient(to right, #fff 5%,green 15%, green 85%, #fff 95%);
+    border-image-slice: 1;
+    border-style: solid;
+}
+	</style>
+</head>
+<body>
+	<ul class="navulist"> 
+		<li><a href="">Get Started</a></li>
+		<li><a href="">Nested Grids</a></li>
+		<li><a href="">Grid Classes</a></li>
+		<li><a href="">Multi Columns</a></li>
+		<li><a href="">Offset</a></li>
+		<li><a href="">No Responsive</a></li>
+		<li><a href="">No Spacing</a></li>
+		<li><a href="">Percentage Values</a></li>
+	</ul>
+
+	<div class="seperator"></div>
+</body>
+</html>

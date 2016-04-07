@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+
+    font-family: "Roboto", sans-serif;
+
+    color: #fff;
+    background-color: #232629;
+}
+
+p {
+    line-height: 1.7;
+}
+h2 {
+    margin-top: 30px;
+
+    font-size: 1.7em;
+    line-height: 1;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+/* PUSH MENU */
+#menu-switch{
+  display:none;
+}
+#menu {
+    position: fixed;
+    top: 0;
+    left: -300px;
+
+    width: 300px;
+    height: 100%;
+    padding: 50px 30px;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+
+    -webkit-transition: all .3s ease-in;
+       -moz-transition: all .3s ease-in;
+         -o-transition: all .3s ease-in;
+            transition: all .3s ease-in;
+    text-align: center;
+
+    background-color: #fff;
+}
+#menu .brand {
+    height: 51px;
+
+    font-size: 70px;
+    font-weight: 900;
+    line-height: .6;
+
+    color: #ddd;
+}
+#menu ul {
+    padding: 0;
+    margin-top: 30px;
+}
+
+#menu ul li a {
+    display: block;
+
+    font-weight: 900;
+    line-height: 50px;
+
+    -webkit-transition: all .3s ease;
+       -moz-transition: all .3s ease;
+         -o-transition: all .3s ease;
+            transition: all .3s ease;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    color: #232629;
+    border-top: 1px solid #eee;
+}
+#menu ul li:last-child a {
+    border-bottom: 1px solid #eee;
+}
+#menu ul li a:hover {
+    letter-spacing: 1px;
+}
+#menu-switch:checked ~ #menu {
+    left: 0;
+}
+/* MAIN PAGE */
+.page-wrap {
+   
+    padding: 50px;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+
+    -webkit-transition: all .3s ease-in;
+       -moz-transition: all .3s ease-in;
+         -o-transition: all .3s ease-in;
+            transition: all .3s ease-in;
+}
+#menu-switch:checked ~ .page-wrap {
+    margin-left: 300px;
+}
+
+/* MENU TOGGLE ICON */
+#menu-toggle:focus {
+    outline: none;
+}
+#menu-toggle {
+    display:inline-block;
+    position: relative;
+
+    width: 51px;
+    height: 51px;
+
+    cursor: pointer;
+
+    border: none;
+    -webkit-border-radius: 50px;
+       -moz-border-radius: 50px;
+            border-radius: 50px;
+    background: #fff;
+      -webkit-transition: all .5s ease;
+       -moz-transition: all .5s ease;
+         -o-transition: all .5s ease;
+            transition: all .5s ease;
+}
+#menu-toggle:before,
+#menu-toggle:after {
+    position: absolute;
+
+    content: "";
+
+    background-color: #232629;
+}
+
+#menu-toggle:before {
+    top: 12px;
+    left: 25px;
+
+    width: 1px;
+    height: 27px;
+}
+#menu-toggle:after {
+    top: 25px;
+    left: 12px;
+
+    width: 27px;
+    height: 1px;
+}
+
+#menu-switch:checked ~ .page-wrap #menu-toggle {
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+}
+/* CONTENT CONTAINER */
+.container {
+    max-width: 600px;
+    min-width: 200px;
+    margin: 0 auto;
+}
+
+p{
+  text-decoration:line-through;
+}
+
+a{
+  font-size: .5em;
+}
+
+	</style>
+</head>
+<body>
+	<input id="menu-switch" type="checkbox" />
+    <nav id="menu" role="navigation">
+        <div class="brand">&Aopf;</div>            
+        <ul>
+            <li><a href="#">Item 1</a></li>
+            <li><a href="#">Item 2</a></li>
+            <li><a href="#">Item 3</a></li>
+        </ul>
+    </nav>
+    <div class="page-wrap">
+        <label for="menu-switch" id="menu-toggle"></label>
+           <div class="container" role="main">
+            <article>
+                <h2>Puse Css push menu</h2>
+                    <p>Sometimes you just need a really simple push menu, without any Javascript Libraries. I made this in a rush for a client with the instructions to not use any jQuery.</p>
+                    <p>I like the thought of adding a class to the body and climb the DOM instead of adding classes to the affected elements.</p>
+                    <p>Less is more.</p>
+              <h2>CSS is MOARRRR! ;)<h2>
+                <a href="http://codepen.io/razitazi/pen/WbZaOq">forked from here: VANILLA JAVASCRIPT PUSH MENU</a> 
+            </article>
+      </div>
+   </div>
+<script src="http://localhost/jquery.js"></script>
+<script>
+
+</script>
+</body>
+</html>

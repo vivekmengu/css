@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+@import url(http://fonts.googleapis.com/css?family=Abel);
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #999;
+  height: 100%;
+  color: #000;
+  font-family: Abel;
+}
+
+a {
+  text-decoration: none;
+  color: #ff6666;
+}
+
+.button {
+  width: auto;
+  padding: 16px 22px;
+  color: #fff;
+  background-color: #ff6666;
+  text-decoration: none;
+  display: block;
+  -moz-transition: background-color 0.3s ease;
+  -o-transition: background-color 0.3s ease;
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+.button:hover {
+  background-color: #ff4d4d;
+}
+
+.assistive-text {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+#main-content {
+  height: 100%;
+  padding-left: 60px;
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -moz-transition: all 0.3s cubic-bezier(0.25, 0.6, 0.35, 1);
+  -o-transition: all 0.3s cubic-bezier(0.25, 0.6, 0.35, 1);
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.6, 0.35, 1);
+  transition: all 0.3s cubic-bezier(0.25, 0.6, 0.35, 1);
+}
+
+.card-home {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  background-color: #000;
+  position: relative;
+}
+
+.card-home__image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: center;
+  -moz-transition: -moz-transform 0.3s cubic-bezier(0.25, 0.6, 0.35, 1);
+  -o-transition: -o-transform 0.3s cubic-bezier(0.25, 0.6, 0.35, 1);
+  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.25, 0.6, 0.35, 1);
+  transition: transform 0.3s cubic-bezier(0.25, 0.6, 0.35, 1);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+  opacity: 0.9;
+}
+
+.cta--home {
+  width: 100%;
+  position: absolute;
+  top: 45%;
+  left: 0;
+  padding: 0 40px;
+}
+@media (min-width: 750px) {
+  .cta--home {
+    width: 50%;
+    padding: 0;
+    left: 100px;
+  }
+}
+
+.cta__header {
+  margin: 0;
+  font-size: 48px;
+}
+
+.cta__subtitle {
+  font-size: 22px;
+}
+
+.cta__button {
+  margin: 20px 0;
+  float: left;
+}
+
+.site-header {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 60px;
+  z-index: 999;
+  overflow: hidden;
+  -moz-transform: translate3d(-100%, 0, 0);
+  -ms-transform: translate3d(-100%, 0, 0);
+  -webkit-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+  -moz-transition: all 0.3s cubic-bezier(0.25, 0.6, 0.35, 1);
+  -o-transition: all 0.3s cubic-bezier(0.25, 0.6, 0.35, 1);
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.6, 0.35, 1);
+  transition: all 0.3s cubic-bezier(0.25, 0.6, 0.35, 1);
+}
+@media (min-width: 750px) {
+  .site-header {
+    width: 75%;
+  }
+}
+
+.site-header__bar {
+  width: 60px;
+  height: 100%;
+  float: right;
+  background-color: #000;
+}
+
+.site-title {
+  float: right;
+  margin: 0;
+  width: 60px;
+  height: 100px;
+}
+.site-title a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 22px 0;
+}
+
+#site-logo {
+  width: 26px;
+  height: 56px;
+  margin: 0 auto;
+  display: block;
+  position: relative;
+}
+
+#nav-toggle-wrap {
+  width: 100%;
+  height: 60px;
+  padding-top: 20px;
+  float: right;
+  background-color: #222;
+}
+
+.nav-toggle {
+  z-index: 2;
+  width: 24px;
+  height: 19px;
+  padding: 8px 0;
+  cursor: pointer;
+  position: relative;
+  margin: 0 auto;
+}
+.nav-toggle span {
+  height: 3px;
+  display: block;
+  overflow: hidden;
+  text-indent: 100%;
+  background: #fff;
+  white-space: nowrap;
+  transition: background 0.3s ease-in-out;
+}
+.nav-toggle::before, .nav-toggle::after {
+  left: 0;
+  content: '';
+  width: 24px;
+  height: 3px;
+  background: #fff;
+  position: absolute;
+  transform-origin: center center;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.nav-toggle::before {
+  top: 0;
+}
+.nav-toggle::after {
+  bottom: 0;
+}
+.nav-toggle.menu-open span {
+  background: rgba(255, 255, 255, 0);
+}
+.nav-toggle.menu-open::before {
+  top: 8px;
+  transform: rotate(-45deg);
+}
+.nav-toggle.menu-open::after {
+  bottom: 8px;
+  transform: rotate(45deg);
+}
+.nav-toggle.menu-open::before, .nav-toggle.menu-open::after {
+  width: 26px;
+  background: #fff;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.nav-toggle.menu-open:hover span, .nav-toggle.menu-open:focus span, .nav-toggle.menu-open:active span {
+  background: rgba(255, 255, 255, 0);
+}
+.nav-toggle.menu-open:hover::before, .nav-toggle.menu-open:focus::before, .nav-toggle.menu-open:active::before {
+  bottom: 4px;
+  transform: rotate(-45deg);
+}
+.nav-toggle.menu-open:hover::after, .nav-toggle.menu-open:focus::after, .nav-toggle.menu-open:active::after {
+  bottom: 4px;
+  transform: rotate(45deg);
+}
+.nav-toggle.menu-open:hover::before, .nav-toggle.menu-open:hover::after, .nav-toggle.menu-open:focus::before, .nav-toggle.menu-open:focus::after, .nav-toggle.menu-open:active::before, .nav-toggle.menu-open:active::after {
+  width: 14px;
+}
+.nav-toggle:hover span, .nav-toggle:focus span, .nav-toggle:active span {
+  background: rgba(255, 255, 255, 0);
+}
+.nav-toggle:hover::before, .nav-toggle:focus::before, .nav-toggle:active::before {
+  top: 4px;
+  left: 5px;
+  transform: rotate(45deg);
+  background-color: #fff;
+}
+.nav-toggle:hover::after, .nav-toggle:focus::after, .nav-toggle:active::after {
+  left: 5px;
+  bottom: 4px;
+  transform: rotate(-45deg);
+}
+.nav-toggle:hover::before, .nav-toggle:hover::after, .nav-toggle:focus::before, .nav-toggle:focus::after, .nav-toggle:active::before, .nav-toggle:active::after {
+  width: 14px;
+}
+
+/****
+  MAIN NAV
+****/
+.main-nav {
+  width: 100%;
+  height: 100px;
+  line-height: 100px;
+  color: #fff;
+  z-index: 9999;
+  font-family: helvetica, arial, sans-serif;
+  background-color: #222;
+  -moz-transform: translate3d(0, -100%, 0);
+  -ms-transform: translate3d(0, -100%, 0);
+  -webkit-transform: translate3d(0, -100%, 0);
+  transform: translate3d(0, -100%, 0);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  -moz-transition: all 0.2s 0;
+  -o-transition: all 0.2s 0;
+  -webkit-transition: all 0.2s 0;
+  transition: all 0.2s 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.main-nav__list {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+}
+
+.main-nav__item {
+  display: inline-block;
+  line-height: 39px;
+  margin: 0 20px;
+}
+.main-nav__item a {
+  text-decoration: none;
+  color: #fff;
+}
+.main-nav__item a:hover {
+  color: #ff6666;
+}
+
+/****
+  Site Nav
+****/
+.site-nav {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.project-nav {
+  text-align: center;
+}
+
+.project-nav__title {
+  color: #000;
+  margin: 70px auto 60px;
+  font-size: 22px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.project-nav__sep {
+  color: #fff;
+  width: 500px;
+  margin: 0 auto;
+  display: block;
+}
+
+.project-nav__list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.project-nav__item {
+  margin: 70px 0;
+}
+.project-nav__item a {
+  display: block;
+}
+
+.project-nav__item__title {
+  margin: 0;
+  font-family: Abel;
+  font-size: 74px;
+}
+@media (min-width: 750px) {
+  .project-nav__item__title {
+    font-family: helvetica, arial, sans-serif;
+  }
+}
+
+/****
+  Active menu
+****/
+.is-active-menu {
+  overflow: hidden;
+}
+.is-active-menu .site-header {
+  left: 0;
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+.is-active-menu .main-nav {
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+  -moz-transition: all 0.2s cubic-bezier(0.25, 0.6, 0.35, 1) 0.2s;
+  -o-transition: all 0.2s cubic-bezier(0.25, 0.6, 0.35, 1) 0.2s;
+  -webkit-transition: all 0.2s cubic-bezier(0.25, 0.6, 0.35, 1);
+  -webkit-transition-delay: 0.2s;
+  transition: all 0.2s cubic-bezier(0.25, 0.6, 0.35, 1) 0.2s;
+}
+.is-active-menu #main-content {
+  padding-left: 0;
+  -moz-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+@media (min-width: 750px) {
+  .is-active-menu #main-content {
+    -moz-transform: translateX(75%);
+    -ms-transform: translateX(75%);
+    -webkit-transform: translateX(75%);
+    transform: translateX(75%);
+  }
+}
+.is-active-menu .card-home__image {
+  background-position: right;
+}
+
+	</style>
+</head>
+<body>
+	<div id='main-content'>
+  <div class='card-home'>
+    <div class='card-home__image' style='background-image: url(https://farm9.staticflickr.com/8682/15309989834_5ecf33cade_k_d.jpg);'></div>
+    <article class='cta--home'>
+      <h1 class='cta__header'>Push menu's</h1>
+      <span class='cta__subtitle'>Are the shiznit</span>
+    </article>
+  </div>
+</div>
+<header class='site-header' id='site-header'>
+  <div class='site-header__bar' id='site-header__bar'>
+    <h1 class='site-title' id='site-title'>
+      <a alt='Super Interactive' href='/' title='Super Interactive'>
+        <svg enable-background='new 0 0 94.319 207' id='site-logo' version='1.1' viewbox='0 0 94.319 207' width='100' x='0px' xml:space='preserve' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg' y='0px'>
+          <g>
+            <path d='M78.063,137.913c8.551,2.343,12.12,7.707,12.12,11.281c0,0,0-44.184,0-51.458s-8.467-10.726-12.949-11.958&#x000A;    L16.304,68.643c-8.551-2.344-12.12-7.706-12.12-11.281c0,0,0,44.184,0,51.458c0,7.272,8.467,10.725,12.949,11.958L78.063,137.913z' fill='#cc5252'></path>
+            <path d='M4.143,109.653c0,0,0-48.917,0-58.75s8.5-14.5,13-16.167s49.999-18.833,57.083-21.583s14.25-6.083,16-9.583&#x000A;    c0,8.833,0,43.666,0,53.5c0,9.375-4.416,10.334-8.166,11.834c-4.268,1.707-57.459,21.791-65.75,25.499&#x000A;    C6.729,98.687,4.143,104.82,4.143,109.653z' fill='#ff6666'></path>
+            <path d='M90.226,96.902c0,0,0,48.917,0,58.751c0,9.833-8.5,14.499-13,16.166s-49.999,18.834-57.083,21.584&#x000A;    s-14.25,6.083-16,9.583c0-8.833,0-43.666,0-53.5c0-9.375,4.416-10.334,8.166-11.834c4.268-1.707,57.459-21.791,65.751-25.499&#x000A;    C87.639,107.869,90.226,101.735,90.226,96.902z' fill='#ff6666'></path>
+          </g>
+        </svg>
+        <span class='assistive-text'>
+          Super Interactive
+        </span>
+      </a>
+    </h1>
+    <div id='nav-toggle-wrap'>
+      <div class='nav-toggle' id='nav-toggle'>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <a class='assistive-text' href='#site-nav' title='Skip to Navigation'>Skip to navigation</a>
+  <nav class='site-nav' id='site-nav'>
+    <div class='main-nav'>
+      <div class='container'>
+        <span class='assistive-text'>Main navigation</span>
+        <ul class='main-nav__list'>
+          <li class='main-nav__item active'>
+            <a href='/'>Home</a>
+          </li>
+          <li class='main-nav__item'>
+            <a href='about'>About</a>
+          </li>
+          <li class='main-nav__item'>
+            <a href='jobs'>Jobs</a>
+          </li>
+          <li class='main-nav__item'>
+            <a href='hire-us'>Hire Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class='project-nav'>
+      <div class='container'>
+        <h3 class='project-nav__title'>
+          View our Projects
+        </h3>
+        <svg class='project-nav__sep' enable-background='new 219.2 388.6 172.5 15' viewbox='219.2 388.6 172.5 15' xmlns='http://www.w3.org/2000/svg'>
+          <g fill='none' stroke-miterlimit='10' stroke-width='1' stroke='#000'>
+            <path d='M219.2 396.1h172.5M305.7 389l-7.1 7.2M312.9 396.1l-7.2 7.2' vector-effect='non-scaling-stroke'></path>
+          </g>
+        </svg>
+      </div>
+      <ul class='project-nav__list'>
+        <li class='project-nav__item'>
+          <a href='index.html'>
+            <span class='project-nav__item__subtitle'>
+              Like nobody's watching
+            </span>
+            <h3 class='project-nav__item__title'>
+              Dance!
+            </h3>
+          </a>
+        </li>
+      </ul>
+      <ul class='project-nav__list'>
+        <li class='project-nav__item'>
+          <a href='index.html'>
+            <span class='project-nav__item__subtitle'>
+              Like nobody's watching
+            </span>
+            <h3 class='project-nav__item__title'>
+              Dance!
+            </h3>
+          </a>
+        </li>
+      </ul>
+      <ul class='project-nav__list'>
+        <li class='project-nav__item'>
+          <a href='index.html'>
+            <span class='project-nav__item__subtitle'>
+              Like nobody's watching
+            </span>
+            <h3 class='project-nav__item__title'>
+              Dance!
+            </h3>
+          </a>
+        </li>
+      </ul>
+      <ul class='project-nav__list'>
+        <li class='project-nav__item'>
+          <a href='index.html'>
+            <span class='project-nav__item__subtitle'>
+              Like nobody's watching
+            </span>
+            <h3 class='project-nav__item__title'>
+              Dance!
+            </h3>
+          </a>
+        </li>
+      </ul>
+      <ul class='project-nav__list'>
+        <li class='project-nav__item'>
+          <a href='index.html'>
+            <span class='project-nav__item__subtitle'>
+              Like nobody's watching
+            </span>
+            <h3 class='project-nav__item__title'>
+              Dance!
+            </h3>
+          </a>
+        </li>
+      </ul>
+      <ul class='project-nav__list'>
+        <li class='project-nav__item'>
+          <a href='index.html'>
+            <span class='project-nav__item__subtitle'>
+              Like nobody's watching
+            </span>
+            <h3 class='project-nav__item__title'>
+              Dance!
+            </h3>
+          </a>
+        </li>
+      </ul>
+      <ul class='project-nav__list'>
+        <li class='project-nav__item'>
+          <a href='index.html'>
+            <span class='project-nav__item__subtitle'>
+              Like nobody's watching
+            </span>
+            <h3 class='project-nav__item__title'>
+              Dance!
+            </h3>
+          </a>
+        </li>
+      </ul>
+      <ul class='project-nav__list'>
+        <li class='project-nav__item'>
+          <a href='index.html'>
+            <span class='project-nav__item__subtitle'>
+              Like nobody's watching
+            </span>
+            <h3 class='project-nav__item__title'>
+              Dance!
+            </h3>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+<script src="http://localhost/jquery.js"></script>
+<script>
+var menu = document.querySelector(".main-nav"),
+  toggle = document.querySelector(".nav-toggle"),
+  body = document.getElementsByTagName('body')[0];
+
+function toggleToggle() {
+  toggle.classList.toggle("menu-open");
+};
+
+function toggleMenu() {
+  menu.classList.toggle("active");
+  body.classList.toggle("is-active-menu");
+};
+
+toggle.addEventListener("click", toggleToggle, false);
+toggle.addEventListener("click", toggleMenu, false);
+
+document.onkeydown = check_key;
+
+function check_key(e) {
+  e = e || window.event;
+  if (e.keyCode == '27') {
+    toggleToggle();
+    toggleMenu();
+  }
+}
+</script>
+</body>
+</html>

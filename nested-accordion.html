@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>nested acco</title>
+  <style>
+@import url('http://fonts.googleapis.com/css?family=Pacifico|Open+Sans:300,400,600');
+
+ul.wdm-accordion {
+  list-style: none;
+  padding: 0;
+}
+ul.wdm-accordion .inner {
+  padding-left: 1em;
+  overflow: hidden;
+  display: none;
+}
+ul.wdm-accordion .inner.show {
+  /*display: block;*/
+}
+ul.wdm-accordion li {
+  margin: .5em 0;
+}
+ul.wdm-accordion li a.toggle {
+  width: 100%;
+  display: block;
+  background: rgba(0, 0, 0, 0.78);
+  color: #fefefe;
+  padding: .75em;
+  border-radius: 0.15em;
+  transition: background .3s ease;
+}
+ul.wdm-accordion li a.toggle:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+  </style>
+</head>
+<body>
+
+<ul class="wdm-accordion">
+  <li>
+    <a class="toggle" href="javascript:void(0);">Item 1</a>
+   <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempus placerat fringilla. Duis a elit et dolor laoreet volutpat. Aliquam ultrices mauris id mattis imperdiet. Aenean cursus ultrices justo et varius. Suspendisse aliquam orci id dui dapibus
+                blandit. In hac habitasse platea dictumst. Sed risus velit, pellentesque eu enim ac, ultricies pretium felis.
+              </p>
+  </li>
+  
+  <li>
+    <a class="toggle" href="javascript:void(0);">Item 2</a>
+    <ul class="inner">
+      <li>Option 1</li>
+      <li>Option 2</li>
+      <li>Option 3</li>
+    </ul>
+  </li>
+  
+  <li>
+    <a class="toggle" href="javascript:void(0);">Item 3</a>
+    <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempus placerat fringilla. Duis a elit et dolor laoreet volutpat. Aliquam ultrices mauris id mattis imperdiet. Aenean cursus ultrices justo et varius. Suspendisse aliquam orci id dui dapibus
+                blandit. In hac habitasse platea dictumst. Sed risus velit, pellentesque eu enim ac, ultricies pretium felis.
+              </p>
+  </li>
+  
+  <li>
+    <a class="toggle" href="javascript:void(0);">Item 4</a>
+    <ul class="inner">
+      <li>
+        <a href="#" class="toggle">Technically any number of nested elements</a>
+        <ul class="inner">
+          <li>
+            <a href="#" class="toggle">Another nested element</a>
+            <div class="inner">
+              <p>
+                As long as the inner element has inner as one of its classes then it will be toggled.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempus placerat fringilla. Duis a elit et dolor laoreet volutpat. Aliquam ultrices mauris id mattis imperdiet. Aenean cursus ultrices justo et varius. Suspendisse aliquam orci id dui dapibus
+                blandit. In hac habitasse platea dictumst. Sed risus velit, pellentesque eu enim ac, ultricies pretium felis.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </li>
+      
+      <li>Option 2</li>
+      
+      <li>Option 3</li>
+    </ul>
+  </li>
+</ul>
+
+<script src="http://localhost/jquery.js"></script>
+  <script>
+$('.toggle').click(function(e) {
+    e.preventDefault();
+  
+    var $this = $(this);
+  
+    if ($this.next().hasClass('show')) {
+        $this.next().removeClass('show');
+        $this.next().slideUp(350);
+    } else {
+        $this.parent().parent().find('li .inner').removeClass('show');
+        $this.parent().parent().find('li .inner').slideUp(350);
+        $this.next().toggleClass('show');
+        $this.next().slideToggle(350);
+    }
+});
+  </script>
+</body>
+</html>

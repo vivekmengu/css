@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>pagination</title>
+	<style>
+html {
+  font-family: 'Open Sans';
+}
+
+* {
+  -webkit-transition: all .10s ease-in-out;
+  transition: all .10s ease-in-out;
+}
+
+.zui-pager {
+  margin: 5em;
+}
+.zui-pager--center {
+  text-align: center;
+}
+.zui-pager--right {
+  text-align: right;
+}
+.zui-pager .btn-group {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+.zui-pager .btn-group__item {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  height: 40px;
+  float: left;
+}
+.zui-pager .btn-group__item .btn {
+  margin: 0;
+  padding: .5em 1em;
+  border: 0;
+  font-weight: 300;
+  background-color: transparent;
+  box-shadow: inset 0px -2px 0px 0px #bbb;
+  color: #bbb;
+}
+.zui-pager .btn-group__item .btn:hover {
+  box-shadow: inset 0px -4px 0px 0px #bbb;
+}
+.zui-pager .btn-group__item .current {
+  box-shadow: inset 0px -4px 0px 0px #739600;
+  color: #739600;
+  font-weight: bold;
+}
+.zui-pager .btn-group__item .current:hover {
+  box-shadow: inset 0px -4px 0px 0px #739600;
+  cursor: default;
+}
+.zui-pager .btn[disabled] {
+  box-shadow: inset 0px -2px 0px 0px #e6e6e6;
+  color: #e6e6e6;
+}
+.zui-pager .btn[disabled]:hover {
+  box-shadow: inset 0px -2px 0px 0px #e6e6e6;
+  cursor: default;
+}
+.zui-pager__input {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 10px;
+}
+.zui-pager__input > input {
+  width: 2em;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  line-height: 1;
+}
+.zui-pager .i-chevron-left,
+.zui-pager .i-chevron-right {
+  margin: 15px;
+  border-style: solid;
+  border-color: #3a3a3a;
+  width: 6px;
+  height: 6px;
+  display: block;
+  cursor: pointer;
+}
+.zui-pager .i-chevron-left {
+  border-width: 1px 0 0 1px;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+.zui-pager .i-chevron-right {
+  border-width: 1px 1px 0 0;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.i-caret-down {
+  border-width: 3px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+  position: absolute;
+  top: 18px;
+  right: 3px;
+}
+
+.small .btn {
+  position: relative;
+  box-shadow: 0 0 0 transparent !important;
+  padding-right: 20px !important;
+  padding-left: 5px !important;
+}
+.small span:nth-of-type(1) {
+  font-weight: bold;
+  color: #739600;
+}
+.small span:nth-of-type(2) {
+  margin: 0 5px;
+}
+.small .select-overlay {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+	</style>
+</head>
+<body>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+
+<div class="zui-pager">
+	<ol class="btn-group">
+		<li class="btn-group__item">
+			<i class="i-chevron-left"></i>
+		</li>
+		<li class="btn-group__item">
+			<button class="btn btn--basic current">1</button>
+		</li>
+		<li class="btn-group__item">
+			<button class="btn btn--basic" disabled="disabled" style="display: none;">...</button>
+		</li>
+		<li class="btn-group__item">
+			<button class="btn btn--basic"><span>2</span></button>
+		</li>
+		<li class="btn-group__item">
+			<button class="btn btn--basic"><span>3</span></button>
+		</li>
+		<li class="btn-group__item">
+			<button class="btn btn--basic"><span>4</span></button>
+		</li>
+		<li class="btn-group__item">
+			<button class="btn btn--basic"><span>5</span></button>
+		</li>
+		<li class="btn-group__item">
+			<button class="btn btn--basic" disabled="disabled">...</button>
+		</li>
+		<li class="btn-group__item">
+			<button class="btn btn--basic"><span>40</span></button>
+		</li>
+		<li class="btn-group__item">
+			<i class="i-chevron-right"></i>
+		</li>
+	</ol>
+	<form class="zui-pager__input">
+		<input type="text">
+	</form>
+</div>
+
+<div class="zui-pager small">
+	<ol class="btn-group">
+		<li class="btn-group__item">
+			<i class="i-chevron-left"></i>
+		</li>
+		<li class="btn-group__item">
+			<div class="btn btn--action"><span>1</span><span>of</span><span>40</span><i class="i-caret-down"></i>
+				<select class="select-overlay">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+					<option value="13">13</option>
+					<option value="14">14</option>
+					<option value="15">15</option>
+					<option value="16">16</option>
+					<option value="17">17</option>
+					<option value="18">18</option>
+					<option value="19">19</option>
+					<option value="20">20</option>
+					<option value="21">21</option>
+					<option value="22">22</option>
+					<option value="23">23</option>
+					<option value="24">24</option>
+					<option value="25">25</option>
+					<option value="26">26</option>
+					<option value="27">27</option>
+					<option value="28">28</option>
+					<option value="29">29</option>
+					<option value="30">30</option>
+					<option value="31">31</option>
+					<option value="32">32</option>
+					<option value="33">33</option>
+					<option value="34">34</option>
+					<option value="35">35</option>
+					<option value="36">36</option>
+					<option value="37">37</option>
+					<option value="38">38</option>
+					<option value="39">39</option>
+					<option value="40">40</option>
+				</select>
+			</div>
+		</li>
+		<li class="btn-group__item">
+			<i class="i-chevron-right"></i>
+		</li>
+	</ol>
+	<form class="zui-pager__input">
+		<input type="text">
+	</form>
+</div>
+</body>
+</html>

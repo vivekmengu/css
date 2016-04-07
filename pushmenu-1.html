@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: #e74c3c;
+  font-family: "Montserrat", sans-serif;
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  color: #7b190f;
+}
+ul li {
+  padding: 1em;
+}
+
+h1 {
+  font-size: 4em;
+  color: white;
+}
+
+p {
+  line-height: 2em;
+  color: white;
+}
+
+a {
+  color: white;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  transition: transform 0.3s linear;
+}
+
+.container--slide-right {
+  transform: translateX(30%);
+}
+
+.drawer {
+  position: absolute;
+  width: 30%;
+  height: 100%;
+  background-color: #f29f97;
+  z-index: 1;
+}
+.drawer .back {
+  width: 100%;
+  height: 2em;
+  font-size: 2em;
+  background-color: #dc5547;
+  cursor: pointer;
+  padding-top: 1em;
+  text-align: center;
+  display: none;
+}
+.drawer .menu {
+  font-size: 2em;
+}
+.drawer .menu .menu-item {
+  text-align: center;
+  border-bottom: 1px solid #4d100a;
+  cursor: pointer;
+  position: relative;
+}
+.drawer .menu .menu-item:hover {
+  background-color: #c6675d;
+}
+.drawer .menu .menu-item[data-child]:before {
+  display: inline-block;
+  content: "<>";
+  color: #e74c3c;
+  font-size: 1.5em;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  position: absolute;
+  left: 5%;
+  top: 20%;
+}
+
+.drawer--activate {
+  z-index: 3;
+}
+
+.side {
+  float: left;
+  position: relative;
+  width: 30%;
+  height: 100%;
+  background-color: #c0392b;
+  font-size: 2em;
+  font-style: normal;
+  font-weight: 400;
+}
+.side .open-drawer {
+  display: block;
+  margin: 2em auto;
+  width: 5em;
+  font-size: 1em;
+  line-height: 2em;
+  text-align: center;
+  border: none;
+  background-color: #f29f97;
+}
+.side .sidetext {
+  width: 80%;
+  margin: auto;
+  padding: 1em;
+}
+
+.content {
+  float: right;
+  position: relative;
+  width: 70%;
+  height: 100%;
+  overflow: hidden;
+}
+.content .content-wrapper {
+  width: 60%;
+  margin: auto;
+}
+
+.active {
+  display: block;
+}
+
+.move {
+  transform: translate(30%);
+}
+
+.meat {
+  font-size: 2em;
+  margin: auto;
+}
+
+	</style>
+</head>
+<body>
+	<div class="main">
+  <div class="drawer">
+    <div class="back">
+      Back    
+    </div>
+    <ul class="menu" data-name="root">
+      <li class="menu-item" data-child="udacity">
+        Udacity
+      </li>
+      <li class="menu-item">
+        Coursera
+      </li>
+      <li class="menu-item">
+        edX
+      </li>
+    </ul>
+    <ul class="menu" data-name="udacity">
+      <li class="menu-item" data-child="cs">
+        Computer Science
+      </li>
+      <li class="menu-item">
+        Web Development
+      </li>
+      <li class="menu-item">
+        Mathematics
+      </li>
+    </ul>
+    <ul class="menu" data-name="cs">
+      <li class="menu-item">
+        Intro  
+      </li>
+      <li class="menu-item">
+        Design Of Computer Programs
+      </li>
+      <li class="menu-item">
+        Algorithms
+      </li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="side">
+      <button class="open-drawer">OPEN</button>
+      <section class="sidetext">
+        <p>
+          This is pen is a practice lesson from <a href="http://tr.im/4brfg">codrops.com</a>
+        </p>
+      </section>
+    </div>
+    <div class="content">
+      <div class="content-wrapper">
+        <header>
+          <h1>
+            Multilevel Push Menu
+          </h1>
+        </header>
+        <section class="meat">
+          <p>
+            This pen illustrates nested menus which slides
+            in as sidebar.
+            Click the 'Open' button to get started.
+          </p>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="http://localhost/jquery.js"></script>
+<script type="text/javascript">
+	var container = {
+  __el: $('.container').first(),
+  slideRight: function() {
+    this.__el.addClass('container--slide-right');
+  },
+  slideToOriginal: function() {
+    this.__el.removeClass('container--slide-right');
+  }
+};
+
+var button = {
+  __el: $('button').first(),
+  text: function() {
+    return this.__el.html()
+  },
+  changeText: function(newText) {
+    this.__el.html(newText.toUpperCase());
+  },
+  click: function(fn) {
+    this.__el.click(fn);
+  }
+}
+
+var drawer = {
+  __el: $('.drawer'),
+  menus: $('.drawer ul'),
+  isActivated: false,
+  navStack: []
+};
+
+drawer.load = function(menu) {
+  $('ul', '.drawer').hide();
+  $('ul[data-name="' + menu + '"]').show();
+}
+
+drawer.activate = function() {
+  drawer.load('root');
+  container.slideRight();
+  button.changeText('Close');
+};
+
+drawer.deactivate = function() {
+  drawer.navStack = [];
+  drawer.back.deactivate();
+  container.slideToOriginal();
+  button.changeText('Open');
+};
+
+// Loads the conerned the menu in the drawer and
+// pushes the old menu object to navigation stack
+// for the back button to function
+drawer.update = function(el, parent) {
+  drawer.navStack.push(parent);
+  drawer.load(el.data('name'));
+};
+
+// Controller for switching the menu when a menu item
+// with a child menu is clicked
+drawer.linkConnector = function(el) {
+  var childName = el.data('child');
+  var childElement, parent;
+  parent = el.parent();
+  if (childName) {
+    childElement = $('ul', '.drawer').filter(function() {
+      if ($(this).data('name') === childName) {
+        return true;
+      }
+    });
+  }
+
+  if (childElement) {
+    drawer.update(childElement, parent);
+  }
+};
+
+// The back button from the drawer menu
+drawer.back = {
+  activate: function() {
+    $('.drawer .back').show();
+  },
+  deactivate: function() {
+    $('.drawer .back').hide();
+  },
+  click: function() {
+    var previous = drawer.navStack.pop();
+    if (drawer.navStack.length === 0) {
+      drawer.back.deactivate();
+    }
+    drawer.load(previous.data('name'));
+  }
+}
+
+// Attaching click handlers
+$('.drawer li').click(function() {
+  drawer.linkConnector($(this));
+  if (drawer.navStack.length) {
+    drawer.back.activate();
+  }
+});
+
+$('.drawer .back').click(drawer.back.click);
+
+button.click(function(e) {
+  if (drawer.isActivated) {
+    drawer.deactivate();
+    drawer.isActivated = !drawer.isActivated;
+  } else {
+    drawer.activate();
+    drawer.isActivated = !drawer.isActivated;
+  }
+});
+</script>
+</body>
+</html>

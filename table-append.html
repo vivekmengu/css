@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    <table id='add_faq_data' >
+        <thead>
+            <th>Enter Question</th>
+            <th>Answer</th>
+        </thead>
+        <tbody id='add_faq'>
+            <tr class="abc" id='wdm_add_faq_details'>
+                <td>
+                    <input type='text' name='wdm_faq_question[]' required placeholder="Enter Question">
+                </td>
+                <td>
+                    <input type='text' name='wdm_faq_answer[]' placeholder="Faq Answer">
+                </td>
+          
+            </tr>
+        </tbody> 
+    </table>
+
+<button class="add">Clone all p elements, and append them to the body element</button>
+<script src="http://localhost/jquery.js"></script>
+<script>
+$(document).ready(function(){
+var i = 1;
+    $(document).on('click','button.add',function(){
+    
+        $(".abc").clone().appendTo("table").attr('class','abc'+i);
+        if($('tr').hasClass('abc'+i)) {
+        $('tr.abc'+i).append('<td class="delete-btn" id="delete'+ i +'"><button>-</button></td>');
+        }
+        i++;
+        //deleteaa();
+    });
+
+
+
+    //function deleteaa() {
+        $(document).on('click','.delete-btn',function(e){
+            e.preventDefault();
+            alert('hey');
+        });
+    //};
+
+});
+</script>
+
+</body>
+</html>

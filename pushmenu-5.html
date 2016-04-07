@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+body {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  background: aliceblue;
+  color: teal;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#main {
+  position: absolute;
+  top: 0;
+  left: 200px;
+  right: 0;
+  bottom: 0;
+}
+
+  #content {
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #404E51;
+  }
+    .page-story {
+      font-family: Open Sans, sans-serif;
+    }
+
+  #top {
+    position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
+    line-height: 32px;
+    min-height: 32px;
+    text-transform: uppercase;
+    background: lightseagreen;
+    color: ivory;
+  }
+  #top:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+    .burger {
+      float: left;
+      padding: 5px;
+      width: 32px;
+      height: 32px;
+      text-align: center;
+      border: 1px solid;
+    }
+  #push-menu-state {
+    float: left;
+    padding: 5px;
+  }
+
+#push-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background: teal;
+  color: ivory;
+}
+
+  .brand {
+    display: block;
+    margin: 0;
+    padding: 5px;
+    background: tomato;
+  }
+
+  .nav-menu { padding-top: 30px; }
+    .nav-menu li {
+      padding-top: 2px;
+      padding-bottom: 2px;
+      line-height: 48px;
+    }
+    .nav-menu a {
+      color: ivory;
+      text-decoration: none;
+    }
+      .nav-image {
+        float: left;
+        width: 50px;
+        line-height: 48px;
+        text-align: center;
+      }
+
+.small-menu #main { left: 0; }
+.small-menu #push-menu { left: -200px; }
+
+#main, #push-menu {
+  transition: all 0.15s linear;
+}
+
+	</style>
+</head>
+<body>
+	<div id='main'>
+  <div id='top'>
+    <div id='push-menu-toggle'>
+      <div class='burger'>
+        <i class='fa fa-bars'></i>
+      </div>
+    </div>
+    <div id='push-menu-state'>
+      <strong>Push Menu State is</strong>
+      <span class='cookie-is'></span>
+    </div>
+  </div>
+  <div id='content'>
+    <div class='page-header'>
+      <h1>Refresh the frame to see cookies in action</h1>
+    </div>
+    <div class='page-story'>
+      <p>Predefine your push menu state with cookies, using jquery.cookies.js plugin</p>
+      <p>
+        <a href='https://github.com/carhartl/jquery-cookie'>https://github.com/carhartl/jquery-cookie</a>
+      </p>
+    </div>
+  </div>
+</div>
+<div id='push-menu'>
+  <h1 class='brand'>PUSH MENU w/COOKIES</h1>
+  <ul class='nav-menu'>
+    <li>
+      <a href='#'>
+        <i class='nav-image fa fa-home'></i>
+        <span class='nav-name'>HOME</span>
+      </a>
+    </li>
+    <li>
+      <a href='#'>
+        <i class='nav-image fa fa-anchor'></i>
+        <span class='nav-name'>ABOUT US</span>
+      </a>
+    </li>
+    <li>
+      <a href='#'>
+        <i class='nav-image fa fa-envelope'></i>
+        <span class='nav-name'>CONTACT</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<script src="http://localhost/jquery.js"></script>
+<script>
+$(document).ready(function(){
+  
+  var $body = $('body'),
+      $btn = $('#push-menu-toggle'),
+      $menu = $('#push-menu'),
+      menu_state = $.cookie('my_cookie_name'),
+      viewportX = $(window).width();
+  
+  var cookieValue = $.cookie('my_cookie_name');
+  
+  if ( cookieValue === 'close' ) {
+    $body.addClass('small-menu');
+  } else {
+    $body.removeClass('small-menu');
+  }
+   
+  $.cookie('my_cookie_name', menu_state);
+  
+  $('.cookie-is').find('em').remove();
+  $('.cookie-is').prepend().html( '<em>' + $.cookie('my_cookie_name') + '</em>');
+     
+  $btn.click(function(){
+        
+    $body.toggleClass('small-menu');
+    
+    $.removeCookie('my_cookie_name');
+    
+    if ( $body.hasClass('small-menu') ) {
+      menu_state = 'close';
+    } else {
+      menu_state = 'open';
+    }
+    
+    $.cookie('my_cookie_name', menu_state);
+  
+    $('.cookie-is').find('em').remove();
+    $('.cookie-is').prepend().html( '<em>' + $.cookie('my_cookie_name') + '</em>');
+  });
+
+});
+
+</script>
+</body>
+</html>

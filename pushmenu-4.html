@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #ec008c;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+.wrapper {
+  height: 100%;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.content {
+  width: 650px;
+  margin: 0 auto;
+}
+.content p {
+  line-height: 1.5;
+  color: #666;
+  margin: 1.5em 0;
+}
+
+.leader {
+  width: 100%;
+  height: 66%;
+  background-size: cover;
+  background-position: center;
+}
+
+.main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  transition: transform .3s ease, -webkit-transform .3s ease;
+}
+.main-nav ul {
+  width: 100%;
+  list-style: none;
+  line-height: 2;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.site-header {
+  width: 100%;
+  height: 70px;
+  background: #ec008c;
+}
+
+.is-active-menu {
+  overflow: hidden;
+}
+.is-active-menu .main-nav {
+  visibility: visible;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.is-active-menu .wrapper {
+  position: relative;
+  z-index: 20;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  margin-top: -70px;
+}
+
+.nav-toggle {
+  top: 25px;
+  z-index: 2;
+  right: 12px;
+  width: 25px;
+  height: 20px;
+  padding: 8px 0;
+  cursor: pointer;
+  position: absolute;
+}
+.nav-toggle span {
+  height: 4px;
+  display: block;
+  overflow: hidden;
+  text-indent: 100%;
+  background: #fff;
+  white-space: nowrap;
+  width: 25px;
+  -webkit-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+}
+.nav-toggle::before, .nav-toggle::after {
+  left: 0;
+  content: '';
+  width: 25px;
+  height: 4px;
+  background: #fff;
+  position: absolute;
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+  -webkit-transition: width 0.2s ease-in-out, background 0.2s ease-in-out, top 0.2s ease-in-out, bottom 0.2s ease-in-out, left 0.2s ease-in-out, right 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  transition: width 0.2s ease-in-out, background 0.2s ease-in-out, top 0.2s ease-in-out, bottom 0.2s ease-in-out, left 0.2s ease-in-out, right 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  transition: width 0.2s ease-in-out, background 0.2s ease-in-out, transform 0.2s ease-in-out, top 0.2s ease-in-out, bottom 0.2s ease-in-out, left 0.2s ease-in-out, right 0.2s ease-in-out;
+  transition: width 0.2s ease-in-out, background 0.2s ease-in-out, transform 0.2s ease-in-out, top 0.2s ease-in-out, bottom 0.2s ease-in-out, left 0.2s ease-in-out, right 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}
+.nav-toggle::before {
+  top: 0;
+}
+.nav-toggle::after {
+  bottom: 0;
+}
+.nav-toggle.menu-open span {
+  background: rgba(255, 255, 255, 0);
+}
+.nav-toggle.menu-open::before {
+  top: 8px;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+.nav-toggle.menu-open::after {
+  bottom: 8px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.nav-toggle.menu-open::before, .nav-toggle.menu-open::after {
+  width: 26px;
+  background: #fff;
+}
+.nav-toggle.menu-open:hover span, .nav-toggle.menu-open:focus span, .nav-toggle.menu-open:active span {
+  background: rgba(255, 255, 255, 0);
+}
+.nav-toggle.menu-open:hover::before, .nav-toggle.menu-open:focus::before, .nav-toggle.menu-open:active::before {
+  top: 8px;
+  left: -3px;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+.nav-toggle.menu-open:hover::after, .nav-toggle.menu-open:focus::after, .nav-toggle.menu-open:active::after {
+  left: 9px;
+  bottom: 8px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.nav-toggle.menu-open:hover::before, .nav-toggle.menu-open:hover::after, .nav-toggle.menu-open:focus::before, .nav-toggle.menu-open:focus::after, .nav-toggle.menu-open:active::before, .nav-toggle.menu-open:active::after {
+  width: 18px;
+}
+.nav-toggle:hover span, .nav-toggle:focus span, .nav-toggle:active span {
+  background: rgba(255, 255, 255, 0);
+}
+.nav-toggle:hover::before, .nav-toggle:focus::before, .nav-toggle:active::before {
+  top: 8px;
+  left: -3px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.nav-toggle:hover::after, .nav-toggle:focus::after, .nav-toggle:active::after {
+  left: 9px;
+  bottom: 8px;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+.nav-toggle:hover::before, .nav-toggle:hover::after, .nav-toggle:focus::before, .nav-toggle:focus::after, .nav-toggle:active::before, .nav-toggle:active::after {
+  width: 18px;
+}
+
+	</style>
+</head>
+<body>
+	<div class='wrapper'>
+  <header class='site-header'>
+    <div class='nav-toggle'>
+      <span></span>
+    </div>
+  </header>
+  <div class='leader' style='background-image:url(https://farm8.staticflickr.com/7595/16575563694_5259f740ed_k_d.jpg);'></div>
+  <div class='content'>
+    <p>Swag cold-pressed Godard farm-to-table, American Apparel four dollar toast single-origin coffee. Cardigan butcher heirloom, messenger bag Banksy meh asymmetrical occupy lo-fi Etsy. Heirloom Thundercats fap twee Banksy, slow-carb XOXO Odd Future pour-over distillery typewriter Austin authentic meggings lumbersexual. Schlitz jean shorts Bushwick PBR, Helvetica Truffaut cred leggings selfies stumptown. Echo Park PBR keytar Marfa, cray hoodie hashtag farm-to-table. Swag wolf cray, kitsch mixtape typewriter VHS butcher irony. Tattooed fingerstache Helvetica, you probably haven't heard of them Blue Bottle lumbersexual selvage kitsch slow-carb disrupt bitters mustache yr vinyl cardigan.</p>
+    <p>Beard literally XOXO ennui flexitarian, pork belly High Life deep v occupy typewriter. Beard wolf mumblecore Intelligentsia pug four dollar toast, wayfarers cliche lomo leggings chillwave small batch. Retro ethical fanny pack asymmetrical. 3 wolf moon cronut keffiyeh dreamcatcher Thundercats leggings. Flannel typewriter trust fund, Godard hoodie Williamsburg shabby chic scenester PBR&B. Tote bag deep v banh mi Portland flannel Godard. Squid Echo Park locavore pour-over, fixie lomo fap Portland.</p>
+    <p>Truffaut readymade quinoa fanny pack Austin, Blue Bottle scenester fingerstache semiotics migas typewriter bitters viral. Cardigan selfies jean shorts mumblecore health goth, tofu chillwave pop-up cornhole stumptown letterpress bitters meditation scenester. Craft beer fingerstache beard art party chia. Dreamcatcher literally chia four loko, quinoa McSweeney's +1 authentic blog chillwave Kickstarter fingerstache American Apparel vinyl. Bitters hashtag paleo mixtape art party Carles Kickstarter, crucifix typewriter. Street art Bushwick meggings drinking vinegar food truck pour-over, McSweeney's shabby chic tilde leggings art party cornhole skateboard. Deep v Odd Future plaid mumblecore taxidermy, +1 butcher church-key slow-carb.</p>
+    <p>Single-origin coffee meditation DIY literally, beard mustache Odd Future Echo Park ennui post-ironic flannel swag put a bird on it pug Kickstarter. Fashion axe post-ironic pour-over, biodiesel Helvetica tattooed blog Etsy drinking vinegar. Pickled keffiyeh four loko squid Williamsburg polaroid, gastropub flannel sustainable 3 wolf moon drinking vinegar aesthetic. Readymade chillwave ugh next level selfies meh. Retro Blue Bottle umami mlkshk, ennui Bushwick tofu actually next level tattooed. Banjo ennui fap fingerstache fanny pack High Life cornhole. Fingerstache quinoa kitsch food truck keffiyeh selfies.</p>
+  </div>
+</div>
+<nav class='main-nav'>
+  <ul>
+    <li>
+      <a href='#'>Home</a>
+    </li>
+    <li>
+      <a href='#'>About</a>
+    </li>
+    <li>
+      <a href='#'>Work</a>
+    </li>
+    <li>
+      <a href='#'>Contact</a>
+    </li>
+  </ul>
+</nav>
+<script src="http://localhost/jquery.js"></script>
+<script>
+var menu = document.querySelector(".main-nav"),
+    toggle = document.querySelector(".nav-toggle"),
+    body = document.getElementsByTagName('body')[0];
+
+function toggleToggle() {
+  toggle.classList.toggle("menu-open");
+};
+
+function toggleMenu() {
+  menu.classList.toggle("active");
+  body.classList.toggle("is-active-menu");
+};
+
+toggle.addEventListener("click", toggleToggle, false);
+toggle.addEventListener("click", toggleMenu, false);
+
+document.onkeydown = check_key;
+
+function check_key(e) {
+    e = e || window.event;
+    if(e.keyCode == '27') {      
+      toggleToggle();
+      toggleMenu();
+    }
+}
+
+</script>
+</body>
+</html>
